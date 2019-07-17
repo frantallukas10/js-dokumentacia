@@ -94,6 +94,7 @@ console.log(address, zip, state); // vystup je Kosice 04001 Sk
 ## 8. pomenovanie premennych v javascripte
 
 Pri definovani nazvu premennej sa pouziva zapis `camelCase`. Pri definovani nazvu zaciatok nesmie obsahovat číslo (`1name`), premenná nesmie byť pomenovaná nasledovnými slovami:
+
 - `break, continue, debugger, do, while, for, function, if, else, return, switch, try, catch, const, let, var, ...spred`, rozlišuje aj veľkosť písmena.
 
 ```js
@@ -104,12 +105,13 @@ console.log(fullName);
 ## 9. spajanie stringov v javascripte
 
 string v js môžme zapisovať takto:
+
 ```js
 let fullNameViacejRiadkov = `aaa
                              bbb`;
 let fullName1 = `I'm Janko Hrasko`;
 let fullName2 = "I'm Janko Hrasko";
-let fullName3 = 'I\'m Janko Hrasko';
+let fullName3 = "I'm Janko Hrasko";
 let fullName4 = 'I"m Janko Hrasko';
 let fullName5 = 'I' + "'" + 'm Janko Hrasko';
 const nieco = "'";
@@ -124,8 +126,8 @@ console.log(fullName6);
 
 ## 10. čísla a funkcie v javascripte
 
-v js môžme používať všetky matematické úkony (+,-,/,*,...)<br>
-specialne ciselne operatory: `+=`, `-=`, `/=`, `*=`, `++`, `--`, `%`
+v js môžme používať všetky matematické úkony (+,-,/,_,...)<br>
+specialne ciselne operatory: `+=`, `-=`, `/=`, `_=`,`++`,`--`,`%`
 
 ```js
 const number = 34;
@@ -150,7 +152,6 @@ cislo2++; // pripocita 1
 console.log(cislo2); // 1
 console.log(cislo3 % 2); // 1
 
-
 let cislo4 = 0;
 cislo4 += 10; // pripocita k 0 cislo 10 a prepise aktualny stav v parametri cislo4
 console.log(cislo4); // 10
@@ -161,69 +162,91 @@ console.log(cislo4); // 10
 operator na zistenie datoveho typu je `typeof`
 
 - String
+
 ```js
 let text = 'nejaky text';
 ```
+
 - Number
+
 ```js
 let value = 50;
 ```
+
 - Boolean
+
 ```js
 let value1 = true;
 let value2 = false;
 ```
+
 - Null
+
 ```js
 let result = null;
 ```
+
 - Undefined
+
 ```js
 let name;
 ```
 
 - Object
+
 ```js
 let array = ['Janko'];
 let log = function(a) {
   console.log(a);
 };
-let object = {name: 'Janko'}
-
+let object = { name: 'Janko' };
 ```
 
 ## 12. polia v javascripte
 
 Pole slúži na ukladanie viacerých hodnôť do jednej premennej.
+
 ```js
 const priatelov = ['janko', 'ferko', 'dusi', 'traktorista', 45, undefined];
 ```
+
 Z pola vieme vyťahovať hodnoty napr prvu hodnotu z pola:
+
 ```js
 console.log(priatelov[0]);
 ```
+
 Prepisovanie hodnoty v poly:
+
 ```js
 priatelov[0] = 'peto';
 console.log(priatelov);
 ```
+
 Pole začína vždy od 0. vramci pola sa da jendoducho zistit počet hodnôt v poli pomocou `length`
+
 ```js
 console.log(priatelov.length);
 ```
 
 ## 13. funkcie v javascripte
+
 Funkciu deklarujeme takto
+
 ```js
 function ahoj() {
   console.log('ahoj');
 }
 ```
+
 Funkciu ak chceme aby sa vykonala musime ju zavolat napr. takto:
+
 ```js
 ahoj();
 ```
+
 Vo vnutri funkcii vieme definovat priradenie hodnot a nasledne pomocou `return` vratit vysledok:
+
 ```js
 function add(num1, num2) {
   let result = num1 + num2;
@@ -241,11 +264,12 @@ console.log(third);
 ```
 
 Funkcie vieme definovat aj s anonymnou funkciou takto:
+
 ```js
-const add = function (num1, num2) {
+const add = function(num1, num2) {
   let result = num1 + num2;
   return result;
-}
+};
 ```
 
 ## 14. objekty v javascripte
@@ -267,6 +291,7 @@ const person = {
 ```
 
 ak chceme vytiahnut hodnotu z objektu môžeme to vykonať dvoma spôsobmi a to cez `.` alebo cez `[nazov_parametra]`.
+
 ```js
 console.log(person.name);
 console.log(person['name']);
@@ -281,18 +306,21 @@ console.log(person['married']);
 ```
 
 ak je v objekte definované pole vieme vytiahnut prvky z pola takto:
+
 ```js
 console.log(person.siblings[0]);
 console.log(person['siblings'][1]);
 ```
 
 ak je v objekte definovana funkcia vieme ju zavolat napr. takto:
+
 ```js
 person.greeting();
 person['greeting']();
 ```
 
 ak chcem prepisat hodnotu v objekte vieme to spravit takto:
+
 ```js
 person.name = 'Peto';
 person.lastName = 'Topanka';
@@ -308,12 +336,13 @@ person.greeting = function() {
 ## 15. Podmienkova logika if a else v javascripte
 
 V js mame tieto rozhodovacie operatory:
+
 - `>, <, >=, <=`
-- `==, ===, !=, !==` 
-ak porovnavam dve hodnoty pomocou `===` porovnavam aj typ aj hodnotu
-ak porovnavam dve hodnoty pomocou `==` porovnavam iba hodnotu
-ak porovnavam dve hodnoty pomocou `!==` porovnavam aj typ aj hodnotu ale zaujima ma nerovnost medzi hodnotami
-ak porovnavam dve hodnoty pomocou `!=` porovnavam iba hodnotu ale zaujima ma nerovnost medzi hodnotami
+- `==, ===, !=, !==`
+  ak porovnavam dve hodnoty pomocou `===` porovnavam aj typ aj hodnotu
+  ak porovnavam dve hodnoty pomocou `==` porovnavam iba hodnotu
+  ak porovnavam dve hodnoty pomocou `!==` porovnavam aj typ aj hodnotu ale zaujima ma nerovnost medzi hodnotami
+  ak porovnavam dve hodnoty pomocou `!=` porovnavam iba hodnotu ale zaujima ma nerovnost medzi hodnotami
 
 ```js
 let num1 = 4;
@@ -327,7 +356,9 @@ if (num1 < num2) {
   console.log('prve cislo je mensie ako druhe');
 }
 ```
+
 ak mam dve po sebe nadefinovane `if` a porovnavaju rovnake hodnoty môžem to prepisať takto:
+
 ```js
 if (num1 > num2) {
   console.log('prve cislo je vacsie ako druhe');
@@ -350,16 +381,18 @@ if (num1 > num2) {
 ```
 
 ak chcem vytvorit opacnu logiku tj. znegovat logiku mozem pouzit `!` na znekovanie hodnoty
+
 ```js
 let value = false;
-if(!value) {
-  console.log('hodnota je true')
+if (!value) {
+  console.log('hodnota je true');
 }
 ```
 
 ## 16. Logicke operatory `AND` a `OR` v javascripte
 
 v JS mame tieto logicke operatory:
+
 - AND `&&`
 - OR `||`
 
@@ -371,7 +404,7 @@ const vstupHeslo = 'nba12345';
 const databaseEmail = 'janko@gmail.com';
 const databaseHeslo = 'nba12345';
 
-// ak vstupEmail a databaseEmail ma rovnaky typ a hodnotu nasledne ma zaujima aj 
+// ak vstupEmail a databaseEmail ma rovnaky typ a hodnotu nasledne ma zaujima aj
 // vstupHeslo a databaseHeslo ma rovnaky typ a hodnotu tj.
 // 1 && 1 vyhodnoti sa to ako pravda
 // 0 && 1 vyhodnoti sa to ako nepravda
@@ -389,6 +422,7 @@ if (vstupEmail === databaseEmail && vstupHeslo === databaseHeslo) {
 ```
 
 vramci js vieme vyhodnocovat a spustat kod takymto zapisom
+
 ```js
 const vykonaj = true;
 // ak je vykonaj pravidva hodnota tak sa nasledne vykona vsetko za &&
@@ -407,11 +441,13 @@ if (!vykonaj) {
 ```
 
 ## 17. metoda `Switch()` v javascripte
+
 `switch()` metoda sluzi na jednoduche vyhodnocovanie viacerých podmienok.
 
 `switch()` metoda ocakva vstupnu hodnotu ktora sa bude porovnavat s každou `case` hodnotou, ak sa hodnota rovna vstupnej hodnote vo `switch()` metode vykona sa skript ktory je definovaný za `:` a nasledne pomocou `break` sa dany skript ukončí. Na konci sa vždý definuje `default:` ktorí bý mal definovať to, že čo má udiať ak ani jedna hodnota z `case` nie je rovná vstupnej hodnote zo `switch()`
 
 prerobenie 'if a else' na `switch`
+
 ```js
 const value = 1;
 
@@ -451,6 +487,7 @@ switch (value) {
 ```
 
 ## 18. `while` cyklus v javascripte
+
 cyklus `while` ma vo vnútri definovaný skript, ktorí bude vykonaný iba vtedy ak vnutorna definovana logika t.j. `(value <= 10)` pravdivá, ak prestane byť pravdivá následne cyklus skončí.
 
 ```js
@@ -471,9 +508,11 @@ while (value2 > 0) {
 ```
 
 ## 19. `do while` cyklus v javascripte
+
 cyklus `do while` funguje skoro rovnako ako while, len to ze na zaciatku spusteneho skriptu prva vstupna hodnota sa neporovnava s ocakavanym vstupom a bez porovnania sa dany skript vykona 1 krat.
 
 priklad:
+
 ```js
 let value1 = 1;
 
@@ -493,3 +532,115 @@ do {
 
 ## 20. `for` cyklus v javascripte
 
+cyklus `for` definujeme začiatočný stav `;` nasledne definujem logiku koľko krat sa ma vykinať definovaný skript vo vnútri cyklu `;` a posledne definujem pripočitavanie alebo dopočitavanie začiatočného stavu.
+
+príklad:
+
+```js
+let value = 99; // tato hodnota je definovana mimo scopu cyklu for preto vonku value ma vzdy 99
+
+for (let value = 0; value < 10; value++) {
+  // toto je vnutorny scope cyklu for ktori nevidi ze value je 99
+  console.log(`cislo je ${value}`);
+}
+
+console.log(value); // 99
+
+// opacna logika
+for (let value = 10; value > 0; value--) {
+  console.log(`cislo je ${value}`);
+}
+
+console.log(value); // 99
+```
+
+## 21. `string properties` cyklus v javascripte
+
+stringove vlastnosti su:
+
+- ak ku stringu pripocitam inu hodnotu vysledne scitanie je string js.
+
+```js
+const value1 = 'text';
+const value2 = 10;
+console.log(value1 + value2);
+```
+
+- pomocou `length` vieme zistit kolko pismenok obsahuje stringova premenna
+
+```js
+const value1 = 'text';
+console.log(value1.length);
+```
+
+- `indexOf()` najde v definovanej hodnote `veta` hladany string a urci jeho poziciu a pocita aj medzeri a zacina z lava do prava, ak sa pozadovany string nenasiel vrati hodnotu `-1`, viem definovat ako druhy parameter startovaciu poziciu hladanie stringu
+
+```js
+const veta = 'janko peto hrasko iveta jarka neviem us peto';
+console.log(veta.indexOf('peto')); // 6
+console.log(veta.indexOf('10')); // -1
+console.log(veta.indexOf('peto', 10)); // 40
+```
+
+- `lastIndexOf()` najde v definovanej hodnote posledny hladany string a urci jeho poziciu a pocita aj medzeri a zacina z prava do lava, ak sa pozadovany string nenasiel vrati hodnotu `-1`, viem definovat ako druhy parameter startovaciu poziciu hladanie stringu
+
+```js
+const veta = 'janko peto hrasko iveta jarka neviem us peto';
+console.log(veta.lastIndexOf('peto')); // 40
+console.log(veta.lastIndexOf('10')); // -1
+console.log(veta.lastIndexOf('peto', 15)); // 6
+```
+
+- `toLowerCase()` meni string v hodnote na male pismena vs `toUpperCase()` meni string v hodnote na velke pismena.
+
+```js
+const male = 'janko';
+console.log(male.toUpperCase()); // JANKO
+const velke = 'FERKO';
+console.log(velke.toLowerCase()); // ferko
+```
+
+- `charAt()` pomocou tejto metody viem z definovaneho stringu vytiahnut jedno pismenko na zaklade poradia, vzdy zacinam od 0.
+
+```js
+const pismenko = 'Janko';
+console.log(pismenko.charAt(0)); // J
+```
+
+- `trim()` metoda zmaze pred a za stringom prazdny priestor
+
+```js
+const inputFormText = ' janko@gmail.com   ';
+console.log(inputFormText.trim()); // janko@gmail.com
+```
+
+- `startsWith()` sluzi na hladanie stringu od zaciatku vety berie do uvahy aj velkost pismen vs `endWith()` sluzi na hladanie stringu od konca vety berie do uvahy aj velkost pismen vs `includes()` sluzi na hladanie stringu vramci celej vety berie do uvahy aj velkost pismen, includes sa da pouzit aj pre hladanie slova v poly.
+
+```js
+const obsah = 'Jordan peter Jordan';
+console.log(obsah.startsWith('peter')); // false
+console.log(obsah.endWith('Jordan')); // true
+console.log(obsah.includes('peter')); // true
+const pole = ['peter', 'janko', 'dusi'];
+console.log(pole.includes('dusi')); // true
+```
+
+- `replace()` pomocou tejto metody viem prepisat pozadovany string na iny pozadovany string aj globalne aj neglobalne.
+
+```js
+const premenna = 'text aaa text bbb text aaa';
+// prepis neglobalne
+console.log(premenna.replace('aaa', 'bbb')); // text bbb text bbb text aaa
+// prepis globalne
+console.log(premenna.replace(/aaa/g, 'bbb')); // text bbb text bbb text bbb
+```
+
+- `slice()` pomocou tejto metody viem vystrihnut pozadovany string na zaklade ciselnych suradnic pozicie pismenok.
+
+```js
+const slajsujemeText = 'peter janko isiel domov';
+console.log(slajsujemeText.slice(6)); // janko isiel domov
+console.log(slajsujemeText.slice(6, 11)); // janko
+```
+
+todo split, concat, substr, substring

@@ -1,16 +1,16 @@
 // cyklus do while
 
-let value1 = 1;
+let value = 99; // tato hodnota je definovana mimo scopu cyklu for preto vonku value ma vzdy 99
 
-do {
-  console.log(`cislo je ${value1}`);
-  value1++;
-} while (value1 <= 10);
+for (let value = 0; value < 10; value++) {
+  // toto je vnutorny scope cyklu for ktori nevidi ze value je 99
+  console.log(`cislo je ${value}`);
+}
 
-// opacna logika
-let value2 = 10;
+console.log(value); // 99
 
-do {
-  console.log(`cislo je ${value2}`);
-  value2--;
-} while (value2 > 0);
+for (let value = 10; value > 0; value--) {
+  console.log(`cislo je ${value}`);
+}
+
+console.log(value); // 99
