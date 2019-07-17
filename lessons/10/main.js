@@ -21,3 +21,12 @@ console.log(cislo2); // 1
 
 let cislo3 = 5;
 console.log(cislo3 % 2); // 1
+
+let cislo4 = 0;
+cislo4 += 10;
+console.log(cislo4);
+
+const name = 'Janko';
+const lastName = 'Traktorista';
+const result = name - lastName;
+console.log(result);

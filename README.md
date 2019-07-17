@@ -149,66 +149,347 @@ let cislo2 = 0;
 cislo2++; // pripocita 1
 console.log(cislo2); // 1
 console.log(cislo3 % 2); // 1
+
+
+let cislo4 = 0;
+cislo4 += 10; // pripocita k 0 cislo 10 a prepise aktualny stav v parametri cislo4
+console.log(cislo4); // 10
 ```
 
-## 1. basic
+## 11. datove typy v javascripte
 
-vytvor tri prepisovatelne parametre s nazvami radius, x, y<br>
-vsetky tri parameter budu obsahovat cislo 1<br>
-vytvor neprepisovatelny parameter s nazvom circle ktory<br>
-bude obsahovať objekt v ktorom budem mat parameter radius, location a isVisible<br>
-radius bude mat ulozene cislo 1, a location bude mat v sebe objekt v ktorom<br>
-budu dve parameter x a y tieto dve parameter budu mat v sebe ulozene cislo 1<br>
-parameter isVisible v objekte circle bude obsahovat hodnotu true<br>
-dopln do objektu circle parameter draw ktori bude obsahovat anonymnu a ta<br>
-funkcia vypise do consoly 'draw'<br>
-skusme z objektu circle zavolal funkciu ktora je ulozena v parametri draw<br>
+operator na zistenie datoveho typu je `typeof`
 
-[riešenie](lessons/1/main.js)
+- String
+```js
+let text = 'nejaky text';
+```
+- Number
+```js
+let value = 50;
+```
+- Boolean
+```js
+let value1 = true;
+let value2 = false;
+```
+- Null
+```js
+let result = null;
+```
+- Undefined
+```js
+let name;
+```
 
-## 2. Factory functions
+- Object
+```js
+let array = ['Janko'];
+let log = function(a) {
+  console.log(a);
+};
+let object = {name: 'Janko'}
 
-vytvor funkciu s nazvom createCircle ktora bude vraciat obsah circle1 a circle2, ktorí je rovnaký<br>
-potom tuto funkciu craeteCircle zavolam a vytiahnem metodu draw<br>
-zmaz location a is visible parametere vo funkcii craeteCircle a uprav radius parameter tak ze sa do neho bude vkladat vstupna hodnota s nazvom radius namiesto 1, ktora bude definovana pri volani funkcie, ktora pri volani bude defionvana takto createCircle(1) na otestovanie vypisme obsah volanej funkcie cez console log<br>
-zmazem testovanie volanej funkcie...<br>
-vytvor dve konstanty circle1 a circle2 ktore budu obsahovat volanie funkcie createCircle(), kde v prvej bude vstupny parameter 1 a v druhej 2 a tieto dve konstanty nasledne vypisem do terminalu<br>
+```
+
+## 12. polia v javascripte
+
+Pole slúži na ukladanie viacerých hodnôť do jednej premennej.
+```js
+const priatelov = ['janko', 'ferko', 'dusi', 'traktorista', 45, undefined];
+```
+Z pola vieme vyťahovať hodnoty napr prvu hodnotu z pola:
+```js
+console.log(priatelov[0]);
+```
+Prepisovanie hodnoty v poly:
+```js
+priatelov[0] = 'peto';
+console.log(priatelov);
+```
+Pole začína vždy od 0. vramci pola sa da jendoducho zistit počet hodnôt v poli pomocou `length`
+```js
+console.log(priatelov.length);
+```
+
+## 13. funkcie v javascripte
+Funkciu deklarujeme takto
+```js
+function ahoj() {
+  console.log('ahoj');
+}
+```
+Funkciu ak chceme aby sa vykonala musime ju zavolat napr. takto:
+```js
+ahoj();
+```
+Vo vnutri funkcii vieme definovat priradenie hodnot a nasledne pomocou `return` vratit vysledok:
+```js
+function add(num1, num2) {
+  let result = num1 + num2;
+  return result;
+}
+
+const first = add(10, 5);
+console.log(first);
+
+const second = add(100, 20);
+console.log(second);
+
+const third = add(200, 23);
+console.log(third);
+```
+
+Funkcie vieme definovat aj s anonymnou funkciou takto:
+```js
+const add = function (num1, num2) {
+  let result = num1 + num2;
+  return result;
+}
+```
+
+## 14. objekty v javascripte
+
+Objekt umoznuje definovat viacero hodnôt s nazvami parametrov do jedneho parametra
 
 ```js
-const circle1 = {
-  radius: 1,
-  location: {
-    x: 1,
-    y: 1
-  },
-  isVisible: true,
-  draw: function() {
-    console.log('draw');
-  }
-};
-
-const circle2 = {
-  radius: 1,
-  location: {
-    x: 1,
-    y: 1
-  },
-  isVisible: true,
-  draw: function() {
-    console.log('draw');
+const person = {
+  name: 'janko',
+  lastName: 'Papuca',
+  age: 25,
+  education: false,
+  married: true,
+  siblings: ['sister', 'brother'],
+  greeting: function() {
+    console.log('Hello my name is Janko!!!');
   }
 };
 ```
 
-[riešenie](lessons/2/main.js)
+ak chceme vytiahnut hodnotu z objektu môžeme to vykonať dvoma spôsobmi a to cez `.` alebo cez `[nazov_parametra]`.
+```js
+console.log(person.name);
+console.log(person['name']);
+console.log(person.lastName);
+console.log(person['lastName']);
+console.log(person.age);
+console.log(person['age']);
+console.log(person.education);
+console.log(person['education']);
+console.log(person.married);
+console.log(person['married']);
+```
 
-## 3. Constructor functions
+ak je v objekte definované pole vieme vytiahnut prvky z pola takto:
+```js
+console.log(person.siblings[0]);
+console.log(person['siblings'][1]);
+```
 
-po vyrieseni 2 ulohy si skopiruj obsah do 3 riesnia a zmaz si konstatny circle2 aj s console logom <br>
-vytvor funkciu s nazvom Circle() ktora bude mat defionvany vstupny parameter radius<br>
-vramci funkcie skus otestovat vypis do terminalu `this` vypise ti kvantum informacii ktore boli z kontextu node, kontext je objekt, ktori je definovany vramci volanej funkcie<br>
-pred volanu funkciu Circle() skus vlozit `new` vrati ti obsah volanej funkcie<br>
-skus vramci funkcie Circle namiesto `console.log(this)` napisat `this.radius = radius`<br>
-vypis volanie novovytvoreného objektu `new Circle(1)` malo by ti to vypisat obsah objektu<br>
+ak je v objekte definovana funkcia vieme ju zavolat napr. takto:
+```js
+person.greeting();
+person['greeting']();
+```
 
-[riešenie](lessons/3/main.js)
+ak chcem prepisat hodnotu v objekte vieme to spravit takto:
+```js
+person.name = 'Peto';
+person.lastName = 'Topanka';
+person.age = 43;
+person.education = [];
+person.married = false;
+person.siblings = undefined;
+person.greeting = function() {
+  console.log('Hello my name is Peto!!!');
+};
+```
+
+## 15. Podmienkova logika if a else v javascripte
+
+V js mame tieto rozhodovacie operatory:
+- `>, <, >=, <=`
+- `==, ===, !=, !==` 
+ak porovnavam dve hodnoty pomocou `===` porovnavam aj typ aj hodnotu
+ak porovnavam dve hodnoty pomocou `==` porovnavam iba hodnotu
+ak porovnavam dve hodnoty pomocou `!==` porovnavam aj typ aj hodnotu ale zaujima ma nerovnost medzi hodnotami
+ak porovnavam dve hodnoty pomocou `!=` porovnavam iba hodnotu ale zaujima ma nerovnost medzi hodnotami
+
+```js
+let num1 = 4;
+let num2 = 6;
+
+if (num1 > num2) {
+  console.log('prve cislo je vacsie ako druhe');
+}
+
+if (num1 < num2) {
+  console.log('prve cislo je mensie ako druhe');
+}
+```
+ak mam dve po sebe nadefinovane `if` a porovnavaju rovnake hodnoty môžem to prepisať takto:
+```js
+if (num1 > num2) {
+  console.log('prve cislo je vacsie ako druhe');
+} else {
+  console.log('prve cislo je mensie ako druhe');
+}
+
+num1 = 0;
+num2 = 0;
+
+if (num1 > num2) {
+  console.log('prve cislo je vacsie ako druhe');
+} else if (num1 < num2) {
+  console.log('prve cislo je mensie ako druhe');
+} else if (num1 === num2) {
+  console.log('prve cislo je rovnake ako druhe');
+} else {
+  console.log('niekde mas chybu');
+}
+```
+
+ak chcem vytvorit opacnu logiku tj. znegovat logiku mozem pouzit `!` na znekovanie hodnoty
+```js
+let value = false;
+if(!value) {
+  console.log('hodnota je true')
+}
+```
+
+## 16. Logicke operatory `AND` a `OR` v javascripte
+
+v JS mame tieto logicke operatory:
+- AND `&&`
+- OR `||`
+
+```js
+// vyhodnocujem vstupne hodnoty a porovnavam s databazovymi hodnotami
+const vstupEmail = 'janko@gmail.com';
+const vstupHeslo = 'nba12345';
+
+const databaseEmail = 'janko@gmail.com';
+const databaseHeslo = 'nba12345';
+
+// ak vstupEmail a databaseEmail ma rovnaky typ a hodnotu nasledne ma zaujima aj 
+// vstupHeslo a databaseHeslo ma rovnaky typ a hodnotu tj.
+// 1 && 1 vyhodnoti sa to ako pravda
+// 0 && 1 vyhodnoti sa to ako nepravda
+// 1 && 0 vyhodnoti sa to ako nepravda
+// 0 && 0 vyhodnoti sa to ako nepravda
+if (vstupEmail === databaseEmail && vstupHeslo === databaseHeslo) {
+  console.log('ahoj pouzivatel janko');
+} else if (vstupEmail !== databaseEmail && vstupHeslo === databaseHeslo) {
+  console.log('zadal si zly email');
+} else if (vstupEmail === databaseEmail && vstupHeslo !== databaseHeslo) {
+  console.log('zadal si zle heslo');
+} else {
+  console.log('uzivatel neexistuje');
+}
+```
+
+vramci js vieme vyhodnocovat a spustat kod takymto zapisom
+```js
+const vykonaj = true;
+// ak je vykonaj pravidva hodnota tak sa nasledne vykona vsetko za &&
+vykonaj && console.log('ahoj1');
+//to iste
+if (vykonaj) {
+  console.log('ahoj1');
+}
+
+// ak je vykonaj nepravidva hodnota tak sa nasledne vykona vsetko za ||
+vykonaj || console.log('ahoj2');
+// to iste
+if (!vykonaj) {
+  console.log('ahoj2');
+}
+```
+
+## 17. metoda `Switch()` v javascripte
+`switch()` metoda sluzi na jednoduche vyhodnocovanie viacerých podmienok.
+
+`switch()` metoda ocakva vstupnu hodnotu ktora sa bude porovnavat s každou `case` hodnotou, ak sa hodnota rovna vstupnej hodnote vo `switch()` metode vykona sa skript ktory je definovaný za `:` a nasledne pomocou `break` sa dany skript ukončí. Na konci sa vždý definuje `default:` ktorí bý mal definovať to, že čo má udiať ak ani jedna hodnota z `case` nie je rovná vstupnej hodnote zo `switch()`
+
+prerobenie 'if a else' na `switch`
+```js
+const value = 1;
+
+if (value === 1) {
+  console.log('hodil si cislo 1');
+} else if (value === 2) {
+  console.log('hodil si cislo 2');
+} else if (value === 3) {
+  console.log('hodil si cislo 3');
+} else if (value === 4) {
+  console.log('hodil si cislo 4');
+} else if (value === 5) {
+  console.log('hodil si cislo 5');
+} else {
+  console.log('hodil si cislo 6');
+}
+
+switch (value) {
+  case 1:
+    console.log('hodil si cislo 1');
+    break;
+  case 2:
+    console.log('hodil si cislo 2');
+    break;
+  case 3:
+    console.log('hodil si cislo 3');
+    break;
+  case 4:
+    console.log('hodil si cislo 4');
+    break;
+  case 5:
+    console.log('hodil si cislo 5');
+    break;
+  default:
+    console.log('hodil si cislo 6');
+}
+```
+
+## 18. `while` cyklus v javascripte
+cyklus `while` ma vo vnútri definovaný skript, ktorí bude vykonaný iba vtedy ak vnutorna definovana logika t.j. `(value <= 10)` pravdivá, ak prestane byť pravdivá následne cyklus skončí.
+
+```js
+let value1 = 1;
+
+while (value1 <= 10) {
+  console.log(`cislo je ${value1}`);
+  value1++;
+}
+
+// opacna logika
+let value2 = 10;
+
+while (value2 > 0) {
+  console.log(`cislo je ${value2}`);
+  value2--;
+}
+```
+
+## 19. `do while` cyklus v javascripte
+cyklus `do while` funguje skoro rovnako ako while, len to ze na zaciatku spusteneho skriptu prva vstupna hodnota sa neporovnava s ocakavanym vstupom a bez porovnania sa dany skript vykona 1 krat.
+
+priklad:
+```js
+let value1 = 1;
+
+do {
+  console.log(`cislo je ${value1}`);
+  value1++;
+} while (value1 <= 10);
+
+// opacna logika
+let value2 = 10;
+
+do {
+  console.log(`cislo je ${value2}`);
+  value2--;
+} while (value2 > 0);
+```
+
+## 20. `for` cyklus v javascripte
+
