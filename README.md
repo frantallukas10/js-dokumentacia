@@ -532,7 +532,7 @@ do {
 
 ## 20. `for` cyklus v javascripte
 
-cyklus `for` definujeme začiatočný stav `;` nasledne definujem logiku koľko krat sa ma vykinať definovaný skript vo vnútri cyklu `;` a posledne definujem pripočitavanie alebo dopočitavanie začiatočného stavu.
+cyklus `for` definujeme začiatočný stav `;` nasledne definujem logiku koľko krat sa ma vykonať definovaný skript vo vnútri cyklu `;` a posledne definujem pripočitavanie alebo dopočitavanie začiatočného stavu.
 
 príklad:
 
@@ -554,7 +554,7 @@ for (let value = 10; value > 0; value--) {
 console.log(value); // 99
 ```
 
-## 21. `string properties` cyklus v javascripte
+## 21. `string properties` v javascripte
 
 stringove vlastnosti su:
 
@@ -635,12 +635,520 @@ console.log(premenna.replace('aaa', 'bbb')); // text bbb text bbb text aaa
 console.log(premenna.replace(/aaa/g, 'bbb')); // text bbb text bbb text bbb
 ```
 
-- `slice()` pomocou tejto metody viem vystrihnut pozadovany string na zaklade ciselnych suradnic pozicie pismenok.
+- `slice()` a `substring()` pomocou týchto metod viem vystrihnut pozadovany string na zaklade ciselnych suradnic pozicie pismenok. `substring()` metoda je inteligentnejšia ak druha vstuna hodnota je menšia ako prva tak sa berie druha vstupna hodnota ako prva
 
 ```js
-const slajsujemeText = 'peter janko isiel domov';
-console.log(slajsujemeText.slice(6)); // janko isiel domov
-console.log(slajsujemeText.slice(6, 11)); // janko
+const text = 'peter janko isiel domov';
+console.log(text.slice(6)); // janko isiel domov
+console.log(text.substring(6)); // janko isiel domov
+console.log(text.slice(6, 11)); // janko
+console.log(text.substring(6, 11)); // janko
+console.log(text.slice(6, 0)); // vrati nič kedže slice nie je inteligentný ako substring
+console.log(text.substring(6, 0)); // peter
 ```
 
-todo split, concat, substr, substring
+- `substr()` pomocou tejto metody viem vystrinut pozadovany string kde prvy vstupny parameter je cislo, ktore definuje zaciatok vystrihovania a druha vstupna hodnota je cislo ktore definuje dlzku vytahovaneho stringu od zaciatocku vystrihovania
+
+```js
+const text = 'peter janko isiel domov';
+console.log(text.substr(6)); // janko isiel domov
+console.log(text.substr(6, 11)); // janko isiel
+```
+
+- `split()` pomocou tejto metody viem rozdeľovať string poľa definovaného znaku v metode. Ako druhý parameter viem definovať počet, ktorí definuje koľko krát sa má daný string rozdeliť podľa znaku.
+
+```js
+const text = 'ako sa mas ja sa mam';
+console.log(text.split('')); // vrati celkovy string rozdeleny na samostatne pismenka bere do uvahy aj prazdny priestor
+console.log(text.split(' ', 3)); // vrati celkovy string rozdeleny podla existujuceho prazdneho priestoru
+```
+
+- `concat` pomocou tejto metody viem spájať polia do jedného poľa.
+
+```js
+const poleA = ['jablko', 'pomaranc'];
+const poleB = ['citron', 'banan'];
+const poleC = ['jahoda', 'mandarinka'];
+
+const spojenePole = poleA.concat(poleB, poleC);
+
+console.log(spojenePole); // obashuje poleA aj poleB a aj poleC ako jedno pole
+```
+
+## 22. Stringovy literal
+
+vramci ES6+ sa definoval literal vdaka ktoremu vieme zapisovat string `'vysledok:' + 10` aj pomocou literalu takto `vysledok ${10}`
+
+priklad:
+
+```js
+const name = 'Janko';
+const age = 25;
+const sentence = 'ahoj to som ja ' + name + ' a ja mam ' + age + ' rokov';
+console.log(sentence);
+
+const sentenceLit = `ahoj to som ja ${name} a ja mam ${age} rokov`;
+console.log(sentenceLit);
+
+// vstupna hodnota môže byť aj funkcia
+const vykonaj = () => {
+  return 10;
+};
+const text = `cislo je ${vykonaj()}`;
+console.log(text);
+```
+
+## 23. Vlastnosti a metody v poliach
+
+Pole ma vzdy definovany počet prvkov v poli a to viem vytiahnut pomocou `length`
+
+```js
+let names = ['john', 'bob', 'barry', 'olga', 'ben'];
+
+console.log(names.length); // 5
+console.log(names[4]); // 'ben'
+console.log(names[names.length - 1]); // 'ben'
+```
+
+Metody:
+`conncat()`, `reverse()`, `shift()`, `pop()`, `unshift()`, `push()`, `splice()`, `slice()`
+
+- `concat()` sluzi na spajanie poli do jedneho poľa
+```js
+let names = ['john', 'bob', 'barry', 'olga', 'ben'];
+
+const lastNames = ['banan', 'cesnak', 'chilli'];
+const allNames = names.concat(lastNames);
+console.log(allNames); // [ 'john', 'bob', 'barry', 'olga', 'ben', 'banan', 'cesnak', 'chilli' ]
+```
+
+- `reverse()` slúži na prehodenie poradia prvkov v poli
+```js
+let names = ['john', 'bob', 'barry', 'olga', 'ben'];
+
+console.log(names.reverse()); // [ 'ben', 'olga', 'barry', 'bob', 'john' ]
+```
+
+- `shift()` služí na odstranenie prveho prvku z pola 
+```js
+let names = ['john', 'bob', 'barry', 'olga', 'ben'];
+
+console.log(names); // [ 'john', 'bob', 'barry', 'olga', 'ben' ]
+names.shift();
+console.log(names); // [ 'bob', 'barry', 'olga', 'ben' ]
+names.shift();
+console.log(names); // [ 'barry', 'olga', 'ben' ]
+names.shift();
+console.log(names); // [ 'olga', 'ben' ]
+names.shift();
+console.log(names); // [ 'ben' ]
+names.shift();
+console.log(names); // [ ]
+```
+
+- `pop()` slúži na odstranenie posledného prvku z pola
+```js
+let names = ['john', 'bob', 'barry', 'olga', 'ben'];
+
+console.log(names); // [ 'john', 'bob', 'barry', 'olga', 'ben' ]
+names.pop();
+console.log(names); // [ 'john', 'bob', 'barry', 'olga' ]
+names.pop();
+console.log(names); // [ 'john', 'bob', 'barry' ]
+names.pop();
+console.log(names); // [ 'john', 'bob' ]
+names.pop();
+console.log(names); // [ 'john' ]
+names.pop();
+console.log(names); // [ ]
+```
+
+- `unshift()` služí na vkladanie prvku do pola ktore bude vlozene vzdy na zaciatok pola
+```js
+let names = ['john', 'bob', 'barry', 'olga', 'ben'];
+
+console.log(names); // [ 'john', 'bob', 'barry', 'olga', 'ben' ]
+names.unshift('jablko');
+console.log(names); // [ 'jablko', john', 'bob', 'barry', 'olga', 'ben' ]
+names.unshift('hruska');
+console.log(names); // [ 'hruska', 'jablko', 'john', 'bob', 'barry', 'olga', 'ben' ]`
+```
+
+- `push()` služi na vkladanie prvku do pola ktore bude vložene vždy na konci pola
+```js
+let names = ['john', 'bob', 'barry', 'olga', 'ben'];
+
+names.push('jablko');
+console.log(names); // [ 'john', 'bob', 'barry', 'olga', 'ben', 'jablko' ]
+```
+
+- `splice()` služi na doplnenie alebo prepisanie prvkov v poli
+```js
+let names1 = ['john', 'bob', 'barry', 'olga', 'ben'];
+names1.splice(2, 0, 'jablko', 'hruska');
+console.log(names1); // [ 'john', 'bob', 'jablko', 'hruska', 'barry', 'olga', 'ben' ]
+
+let names2 = ['banan', 'pomaranc', 'jablko', 'mango'];
+names2.splice(2, 2, 'citron', 'kiwi');
+console.log(names2); // [ 'banan', 'pomaranc', 'citron', 'kiwi' ]
+```
+
+- `slice()` sluzi na odstranie prvkov z pola, pri tejto metode musim ulozit stav novej zmeny
+```js
+let names1 = ['john', 'bob', 'barry', 'olga', 'ben'];
+names1 = names1.slice(1);
+console.log(names1); // [ 'bob', 'barry', 'olga', 'ben' ]
+
+let names2 = ['banan', 'pomaranc', 'jablko', 'mango'];
+names2 = names2.slice(1, 2);
+console.log(names2); // [ 'pomaranc' ]
+```
+
+## 24. Polia a `for` cyklus 
+
+pomocou `for` cyklu viem jednoducho vytiahnut vsetky prvky z pola:
+
+```js
+let names = ['anna', 'vierka', 'bob'];
+
+for (let i = 0; i < names.length; i++) {
+  console.log(`pozicia prvku v poli je: ${i}, prvok z pola: ${names[i]}`);
+}
+```
+
+## 25.  Funkcie `return`, polia a `for` cyklus
+  
+```js
+let firstArray = ['1', '2', '3'];
+let secondArray = ['4', '5', '6'];
+
+function mergeArray(firstArray, secondArray) {
+  for (let i = 0; i < secondArray.length; i++) {
+    firstArray.push(secondArray[i]);
+  }
+  return firstArray;
+}
+const result = mergeArray(firstArray, secondArray);
+
+console.log(result);
+```
+
+## 26. hodnoty a referencie
+
+pri definovani objektu `{ name: 'bob' }` ktory bol zrecyklovany a nasledne recyklovana hodnota v objekte bola prepisana na novu hodnotu t.j. `susy`, existuje referencia, ktora sa prejavi aj v definovanom objekte z ktori sme recyklovali.
+
+```js
+const number = 1;
+const number2 = number;
+number2 = 7;
+
+console.log(`prva hodnota je ${number}`); // 1
+console.log(`druha hodnota je ${number2}`); // 7
+
+const person = { name: 'bob' };
+const person2 = person;
+person2.name = 'susy';
+
+console.log(`meno s prveho person objektu je ${person.name}`); // 'susy'
+console.log(`meno s prveho person objektu je ${person2.name}`); // 'susy'
+```
+
+## 27. `null` vs `undefined`
+
+```js
+let number = 20 + null;
+console.log(number); // 20
+
+let number2 = 20 + undefined;
+console.log(number2); // NaN
+```
+
+## 28. pravdive a nepravdive výroky
+
+pravdive: `"", '', ``, 1, -1, true`
+nepravdive: `0,-0,NaN, false, null, undefined, !true (negaciou viem spravit nepravdivy vyrok z pravdiveho)`
+
+```js
+const bool1 = false;
+console.log(typeof bool1); // boolean
+const result = 2 < 5;
+console.log(typeof result); // boolean
+
+if (result) {
+  console.log('vyrok je pravdivy');
+} else {
+  console.log('vyrok je nepravdive');
+}
+
+const text = 'nejaky text';
+if (text) {
+  console.log('vyrok je pravdivy');
+} else {
+  console.log('vyrok je nepravdive');
+}
+
+const ocakvanaHodnota = 'nejaky text';
+ocakvanaHodnota && console.log(ocakvanaHodnota);
+
+```
+
+## 29. ternárne operátory
+
+- unarny operator typeof
+```js
+let text = 'some text';
+console.log(typeof text);
+```
+
+- binarny operator
+```js
+let number = 3;
+let number2 = 2 + 5;
+```
+
+- ternarny opertor `condition ? (run if true) : (run if false)`
+```js
+let condition = 2 > 5;
+if (condition) {
+  console.log('pravda');
+} else {
+  console.log('nepravda');
+}
+condition ? console.log('pravda') : console.log('nepravda');
+```
+
+## 30. globalny scope
+
+premenne z vonkajsieho bloku kódu sa nazývajú global scope
+```js
+let name = 'bob';
+name = 'peter';
+
+function pocitaj() {
+  // tu sa nachadza blok kodu
+  console.log(name);
+  name = 'orange';
+
+  function inePocitanie() {
+    // tu sa nachadza blok kodu
+    name = 'this some other value';
+    console.log(name);
+  }
+  inePocitanie();
+}
+
+pocitaj();
+
+if (true) {
+  // tu sa nachadza blok kodu
+  console.log(name);
+  name = 'pants';
+}
+
+console.log(`moje meno je ${name} a je super duper`);
+```
+
+## 31. lokálny scope
+
+local scope nie je dostupny pre vonkajsi blokovy kod
+
+```js
+// vonkajsi blokovy kod
+function pocitaj() {
+  // lokalny blokovy kod
+  const name = 'susy'; // premenna v local scope
+  console.log(name);
+  // lokalny blokovy kod
+}
+// vonkajsi blokovy kod
+console.log(name); // premenna name nie je dostupna pre vonkajsi blokovy kod
+```
+
+## 32. premenne lokalny scope vs global scope
+
+```js
+const globalneCislo = 5;
+
+const spocitaj = () => {
+  const lokalneCislo1 = 3;
+  const lokalneCislo2 = 2;
+  console.log(lokalneCislo1);
+  console.log(lokalneCislo2);
+
+  const spocitajVysledok = lokalneCislo1 + lokalneCislo2 + globalneCislo;
+  const nasob = () => {
+    const nasobokVysledok = globalneCislo * spocitajVysledok;
+
+    console.log('nasobokVysledok', nasobokVysledok);
+  };
+  // console.log(nasobokVysledok); // nie je dostypna hodnota lebo je v inom scope
+
+  nasob();
+  return spocitajVysledok;
+  console.log('toto nebude vypisane lebo mam nad sebou return');
+};// console.log(spocitajVysledok); // nie je dostypna hodnota lebo je v inom scope
+
+console.log(globalneCislo);
+
+console.log('spocitajVysledok', spocitaj());
+```
+
+## 33. `callback function`, `higher order function`
+
+- `callback function` je funkcia ktora vykonava jednoduchu logiku a je pouzita teda zaslana do druhej funkcie ako argument na vykonanie tejto logiky.
+- `higher order function` je funkcia ktora recykluje ine funkcie cez argument t.j. ako vstupny parameter.
+
+```js
+// higher order function
+const spocitaj = (pole, cb) => {
+  let vysledok = [];
+  for (let i = 0; i < pole.length; i++) {
+    let vec = cb(pole[i]); // callback
+    vysledok.push(vec);
+  }
+  return vysledok;
+};
+
+const plus = cislo => {
+  return cislo + 10;
+};
+
+const nasob = cislo => {
+  return cislo * 10;
+};
+
+let hodnota1 = spocitaj([1, 2, 3], plus);
+console.log(hodnota1);
+
+let hodnota2 = spocitaj([1, 2, 3], nasob);
+console.log(hodnota2);
+```
+
+## 34.  Sila iteratorov pre polia
+- iteratacne metody pre polia: `forEach`, `map`, `filter`, `find`, `reduce`
+  
+pozname stary dobry `for` cyklus ale nie je potrebny ak pozname iteracne metody
+```js
+const cislo = [0, 1, 2, 3, 4];
+for (let i = 0; i < cislo.length; i++) {
+  console.log(cislo[i]);
+}
+```
+namiesto toho mozme vyuzit
+1. `forEeach(callbackfn, index, [])`
+- nemeni velkost pola
+```js
+const ludia = [
+  { meno: 'feri', vek: 30, pozicia: 'programator' },
+  { meno: 'janko', vek: 22, pozicia: 'programator' },
+  { meno: 'iveta', vek: 25, pozicia: 'programator' },
+  { meno: 'dusi', vek: 20, pozicia: 'dizajner' },
+  { meno: 'traktorista', vek: 64, pozicia: 'boss' }
+];
+
+ludia.forEach((clovek, index) => {
+  console.log('clovek', clovek, index);
+});
+```
+
+2. `map(callbackfn, index, [])`
+- pri vytvarani noveho pola pouzijeme hodnoty z povodneho pola a nato nam sluzi map
+- nemeni velkost povodneho pola
+```js
+const ludia = [
+  { meno: 'feri', vek: 30, pozicia: 'programator' },
+  { meno: 'janko', vek: 22, pozicia: 'programator' },
+  { meno: 'iveta', vek: 25, pozicia: 'programator' },
+  { meno: 'dusi', vek: 20, pozicia: 'dizajner' },
+  { meno: 'traktorista', vek: 64, pozicia: 'boss' }
+];
+
+const vekLudi = ludia.map((clovek, index) => {
+  console.log(index);
+  return clovek.vek + 10;
+});
+console.log('vekLudi', vekLudi);
+
+const menaLudi = ludia.map(clovek => {
+  return clovek.meno;
+});
+console.log('menaLudi', menaLudi);
+
+const noviLudia = ludia.map(clovek => {
+  return {
+    prveMeno: clovek.meno.toUpperCase(),
+    novyVek: clovek.vek + 20
+  };
+});
+console.log('noviLudia', noviLudia);
+```
+
+3. `filter(callbackfn, index, [])`
+- meni velkost pola
+- filter vyhodnoti logiku vramci funkcie a nasledne vrati najdenu hodnotu ktoru hladame
+- ak sa v poli filtrovana hodnota nenachadza vrati nam prazdne pole
+```js
+const ludia = [
+  { meno: 'feri', vek: 30, pozicia: 'programator' },
+  { meno: 'janko', vek: 22, pozicia: 'programator' },
+  { meno: 'iveta', vek: 25, pozicia: 'programator' },
+  { meno: 'dusi', vek: 20, pozicia: 'dizajner' },
+  { meno: 'traktorista', vek: 64, pozicia: 'boss' }
+];
+// ak sa v poli filtrovana hodnota nenachadza vrati nam prazdne pole
+const mladyludia = ludia.filter(clovek => {
+  return clovek.vek <= 30;
+});
+console.log('mladyludia', mladyludia);
+
+const programatori = ludia.filter(clovek => {
+  return clovek.pozicia === 'programator';
+});
+console.log('programatori', programatori);
+
+const mladiProgramatori = ludia.filter(clovek => {
+  return clovek.vek < 25 && clovek.pozicia === 'programator';
+});
+console.log('mladiProgramatori', mladiProgramatori);
+```
+
+4. `find(predicate, index, [])`
+- ak nenajde hladany prvok vrati undefined
+- skvele pre ziskanie jedinecnej hodnoty z pola
+- vrazi vzdy len prvu najdenu hodnotu vramci definovanej logiky hladania
+```js
+const ludia2 = [
+  { id: 1, meno: 'feri', vek: 30, pozicia: 'programator' },
+  { id: 2, meno: 'janko', vek: 22, pozicia: 'programator' },
+  { id: 3, meno: 'iveta', vek: 25, pozicia: 'programator' },
+  { id: 4, meno: 'dusi', vek: 20, pozicia: 'dizajner' },
+  { id: 5, meno: 'traktorista', vek: 64, pozicia: 'boss' }
+];
+const clovekId = ludia2.find(clovek => {
+  return clovek.id === 0;
+});
+console.log('clovekId', clovekId);
+```
+
+5. `reduce(callbackfn, currentValue, currentIndex, [])`
+- sluzi na manipulaciu aktualne iterovanej hodnoty s predoslou iterovanou hodnotou
+- 1 vstupny parameter accumulator - acc - total z celkovej kalkulacie
+- 2 vstupny parameter currentValue - curr - aktualna iterovana hodnota
+```js
+const ludia3 = [
+  { id: 1, meno: 'feri', vek: 30, pozicia: 'programator', plat: 2000 },
+  { id: 2, meno: 'janko', vek: 22, pozicia: 'programator', plat: 900 },
+  { id: 3, meno: 'iveta', vek: 25, pozicia: 'programator', plat: 1900 },
+  { id: 4, meno: 'dusi', vek: 20, pozicia: 'dizajner', plat: 1200 },
+  { id: 5, meno: 'traktorista', vek: 64, pozicia: 'boss', plat: 9000 }
+];
+const scitaniePlatov = ludia3.reduce((acc, curr) => {
+  console.log('total', acc);
+  console.log('aktualny plat', curr.plat);
+  acc += curr.plat;
+  return acc;
+}, 0);
+console.log('scitaniePlatov', scitaniePlatov);
+```
+
+## 35. Math objekt
