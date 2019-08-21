@@ -4,4 +4,4 @@ console.log(obsah.includes('peter')); //  includes() sluzi na hladanie stringu v
 
 const pole = ['peter', 'janko', 'dusi'];
 console.log(pole.includes('dusi'));
-console.log(obsah.endWith('Jordan')); // true
+console.log(obsah.endsWith('Jordan')); // true

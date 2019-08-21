@@ -70,6 +70,21 @@ alert(20);
 console.log(20);
 ```
 
+## 6. jednoriadkovy a viacriadkovy komentar
+- jednoriadkovy komentar
+```js
+// console.log(1);
+```
+- viacriadkovy komentar
+```js
+/*
+function superDuper() {
+  console.log(2);
+}
+superDuper();
+*/
+```
+
 ## 7. premenne javascriptu
 
 v javascripte vieme nadefinovat premenne pomocou `var`, do ktorych vieme docasne ulozit hodnotu. Je to starsi zapis javascriptu. Aktualne sa pouziva `let` a `const`, kde `let` definuje prepisovatelnu premennu a `const` definuje neprepisovatelnu premennu.
@@ -150,7 +165,7 @@ console.log(cislo1); // 1
 let cislo2 = 0;
 cislo2++; // pripocita 1
 console.log(cislo2); // 1
-console.log(cislo3 % 2); // 1
+console.log(11 % 2); // 1
 
 let cislo4 = 0;
 cislo4 += 10; // pripocita k 0 cislo 10 a prepise aktualny stav v parametri cislo4
@@ -614,12 +629,12 @@ const inputFormText = ' janko@gmail.com   ';
 console.log(inputFormText.trim()); // janko@gmail.com
 ```
 
-- `startsWith()` sluzi na hladanie stringu od zaciatku vety berie do uvahy aj velkost pismen vs `endWith()` sluzi na hladanie stringu od konca vety berie do uvahy aj velkost pismen vs `includes()` sluzi na hladanie stringu vramci celej vety berie do uvahy aj velkost pismen, includes sa da pouzit aj pre hladanie slova v poly.
+- `startsWith()` sluzi na hladanie stringu od zaciatku vety berie do uvahy aj velkost pismen vs `endsWith()` sluzi na hladanie stringu od konca vety berie do uvahy aj velkost pismen vs `includes()` sluzi na hladanie stringu vramci celej vety berie do uvahy aj velkost pismen, includes sa da pouzit aj pre hladanie slova v poly.
 
 ```js
 const obsah = 'Jordan peter Jordan';
 console.log(obsah.startsWith('peter')); // false
-console.log(obsah.endWith('Jordan')); // true
+console.log(obsah.endsWith('Jordan')); // true
 console.log(obsah.includes('peter')); // true
 const pole = ['peter', 'janko', 'dusi'];
 console.log(pole.includes('dusi')); // true
@@ -835,12 +850,12 @@ console.log(result);
 
 ## 26. hodnoty a referencie
 
-pri definovani objektu `{ name: 'bob' }` ktory bol zrecyklovany a nasledne recyklovana hodnota v objekte bola prepisana na novu hodnotu t.j. `susy`, existuje referencia, ktora sa prejavi aj v definovanom objekte z ktori sme recyklovali.
+pri definovani objektu `{ name: 'bob' }` ktory bol zrecyklovany a nasledne recyklovana hodnota v objekte bola prepisana na novu hodnotu t.j. `susy`, existuje referencia, ktora sa prejavi aj v definovanom objekte z ktoreho sme recyklovali.
 
 ```js
 const number = 1;
 const number2 = number;
-number2 = 7;
+number2 = 7; // vyskoci error lebo const definuje neprepisovatelny parameter
 
 console.log(`prva hodnota je ${number}`); // 1
 console.log(`druha hodnota je ${number2}`); // 7
@@ -1151,4 +1166,155 @@ const scitaniePlatov = ludia3.reduce((acc, curr) => {
 console.log('scitaniePlatov', scitaniePlatov);
 ```
 
-## 35. Math objekt
+## 35. Math objekt - standardizovane matematicke metody
+- `Math.floor()` - zaukruhluje na cele cislo
+```js
+const cislo = 4.56789;
+console.log(Math.floor(cislo)); // 4
+```
+- `Math.ceil()` - zaukruhluje na najblizsie najvacsie cele cislo
+```js
+const cislo = 4.56789;
+console.log(Math.ceil(cislo)); // 5
+```
+- `Math.sqrt()` - odmocnina cisla
+```js
+console.log(Math.sqrt(25)); // 5
+```
+- `Math.PI` - 3.141592653589793
+```js
+console.log(Math.PI);
+```
+- `Math.min()` - najdenie najmensieho cisla
+```js
+console.log(Math.min(1, 4, 67, 89, 9));
+```
+- `Math.max()` - najdenie najvacsieho cisla
+```js
+console.log(Math.max(1, 4, 67, 89, 9));
+```
+- `Math.random()` - vrati nahodne vygenerovanie cislo
+```js
+console.log(Math.random());
+console.log(Math.floor(Math.random() * 10)); // 0 - 10
+console.log(Math.floor(Math.random() * 10 + 1)); // 1 - 10
+```
+- `Math.round()` - zaokruhluje na najblizsie cele cislo
+```js
+console.log(Math.round(2.5)); // 3
+console.log(Math.round(2.4)); // 2
+```
+## 36. Date objekt - vieme ziskat aktualny cas, den, mesiac, rok a casove pasmo
+vieme si nadefinovat zaciatocny stav dat pre date objekt
+[linka](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
+```js
+const date1 = new Date('December 17, 1995 03:24:00'); // 1995-12-17T02:24:00.000Z
+const date2 = new Date('1995-12-17T03:24:00'); // 1995-12-17T02:24:00.000Z
+```
+
+vieme vytiahnut data z date objektu
+```js
+const datum = new Date();
+console.log(datum);
+
+let rok = date.getFullYear();
+console.log(rok);
+
+let mesiac = date.getMonth();
+console.log(mesiac);
+
+let den = date.getDay();
+console.log(den);
+
+let sekunda = date.getSeconds();
+console.log(sekunda);
+```
+
+vieme nadefinovat data pre date objektu
+
+```js
+const event = new Date('August 19, 1975 23:15:30');
+event.setDate(24);
+console.log(event.getDate());
+```
+
+## 37. DOM - dokument objekt model
+Vytiahnutie elementov z DOM vieme pomocou tychto metod:
+- `getElementById(id_elementu)` selektujem podla id elementov
+```js
+const h1 = document.getElementById('title')
+h1.style.color = 'red';
+console.log(h1); // <h1 id="title" style="color: red;">text</h1>
+```
+- `getElementsByTagName(nazov_elementu)` selektujem podla tag nazvu elementu
+```js
+const list = document.getElementsByTagName('li');
+console.log(list); // vrati pole selektnutych elemntov
+console.log(list.length); // pocet prvkov v poli
+list[0].style.color = 'red';
+```
+list nam vrati HTMLCollection ktore nie je js pole ktore si pomocou spread operatora tj.`...` vieme preiterovat a vlozit do pola ktore nasledne mozme pouzivat ako v beznom js
+
+```js
+const novePole = [...list];
+novePole.forEach(element => {
+  console.log(element);
+});
+```
+- `getElementsByClassName(class_element)` selektujem podla class nazvu elementu
+```js
+const classSelektnutie = document.getElementsByClassName('daco');
+console.log(classSelektnutie);
+classSelektnutie[1].style.backgroundColor = 'red';
+```
+- `querySelector(vsetky_CSS_selektory)` napr. *, .className, #idName, div[class="daco"]
+```js
+const querySelektJedenPrvyNajdenyElement = document.querySelector('li');
+console.log(querySelektJedenPrvyNajdenyElement);
+querySelektJedenPrvyNajdenyElement.style.backgroundColor = 'green';
+```
+- `querySelectorAll(vsetky_CSS_selektory)` napr. *, .className, #idName, div[class="daco"]
+```js
+const querySelektVsetkyNajdeneElementy = document.querySelectorAll('li');
+console.log(querySelektVsetkyNajdeneElementy);
+querySelektVsetkyNajdeneElementy[3].style.backgroundColor = 'green';
+```
+
+## 38. navigovanie v DOM - `children`, `childNodes`, `firstChild`, `lastChild`
+- `childNodes` vrati vsetky deti selektnuteho elementu aj s prazdnym definovanym priestorom
+```js
+const zoznam = document.querySelector('#zoznam');
+const vsetkyVnoreneDataElementu = zoznam.childNodes;
+console.log(vsetkyVnoreneDataElementu);
+```
+- `children` vieme ziskat vsetky vnorene elementy v selektnutom elemente
+```js
+const vsetkyDetiElementu = zoznam.children;
+console.log(vsetkyDetiElementu);
+```
+- `firstChild` ziskame prvy dieta z childNodes
+```js
+const vytiahnemPrveDieta = zoznam.firstChild;
+console.log(vytiahnemPrveDieta);
+```
+- `lastChild` ziskame posledne dieta z childNodes
+```js
+const vytiahnemPosledneDieta = zoznam.lastChild;
+console.log(vytiahnemPosledneDieta);
+```
+
+## 39. navigovanie v DOM - `nextSibling` vs `previousSibling`
+- `nextSibling` vieme sa posunut vramci DOM o childNodes nadol
+```js
+const prvyElement = document.querySelector('.prva');
+console.log(prvyElement);
+const druhyElement = prvyElement.nextSibling.nextSibling;
+console.log(druhyElement);
+```
+- `previousSibling` vieme sa posunut vramci DOM o childNodes nahor
+```js
+const poslednyElement = document.querySelector('.posledna');
+console.log(poslednyElement);
+const predposlednyElement = poslednyElement.previousSibling.previousSibling;
+console.log(predposlednyElement);
+```

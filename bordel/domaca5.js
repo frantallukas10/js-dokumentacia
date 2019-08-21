@@ -10,12 +10,56 @@ const ludia = [
 // vyuzi metodu forEach, map
 // vramci pouzitia map uloz si kazde novovytvorene pole do konstatny a to konzoluj z vonku
 
+ludia.forEach((clovek, index) => {
+  console.log(clovek, index);
+});
+
+const noviLudia1 = ludia.map(clovek => {
+  return clovek.id;
+});
+console.log('clovek ID', noviLudia1);
+
+const noviLudia2 = ludia.map(clovek => {
+  return clovek.meno;
+});
+console.log('clovek meno', noviLudia2);
+
+const noviLudia3 = ludia.map(clovek => {
+  return clovek.vek;
+});
+console.log('clovek vek', noviLudia3);
+
+const noviLudia4 = ludia.map(clovek => {
+  return clovek.pozicia;
+});
+console.log('clovek pozicia', noviLudia4);
+
+const noviLudia5 = ludia.map(clovek => {
+  return clovek.plat;
+});
+console.log('clovek plat', noviLudia5);
+
 // pokus sa vyfiltorvat pomocou filter meotdy iba programatorov ktori maju vacsi plat ako 1800eur a ma vek vacsi ako 29
+
+const bohatiProgramatori = ludia.filter(clovek => {
+  return (
+    clovek.pozicia === 'programator' && clovek.plat > 1800 && clovek.vek > 29
+  );
+});
+console.log(
+  'programatori nad 29 rokov s platom vacsim ako 1800 eur',
+  bohatiProgramatori
+);
 
 const cisla = [11, 21, 32, -10, 50, 90, 20, 1];
 // pouzi metodu filer na vypisanie len cisel ktore su vacsie ako 19
 
-const cisla = [
+const vacsieCisla = cisla.filter(vstup => {
+  return vstup > 19;
+});
+console.log('cisla vacsie ako 19', vacsieCisla);
+
+const hodnoty = [
   true,
   'aaa',
   {},
@@ -30,7 +74,27 @@ const cisla = [
 ];
 // pouzi metodu filer na vypisanie len string hodnoty
 
-const cisla = [1, 2, 5, -10, 50, 90, 20, 1];
-// pokus sa pomocou metody reduc scitan cisla v poli cisla
+const stringHodnota = hodnoty.filter(parameter => {
+  return typeof parameter === 'string';
+});
+console.log('stringove hodnoty', stringHodnota);
 
-// pokus sa pomocou metody reduc prenasobyt cisla v poli cisla
+const num = [1, 2, 5, -10, 50, 90, 20, 1];
+// pokus sa pomocou metody reduc scitat cisla v poli num
+const scitanie = num.reduce((acc, curr) => {
+  console.log('zaciatocny stav', acc);
+  console.log('aktualny stav', curr);
+  acc += curr;
+  return acc;
+});
+console.log('scitanie', scitanie);
+
+// pokus sa pomocou metody reduc prenasobit cisla v poli num
+
+const nasobenie = num.reduce((acc, curr) => {
+  console.log('zaciatocny stav', acc);
+  console.log('aktualny stav', curr);
+  acc *= curr;
+  return acc;
+});
+console.log('nasobenie', nasobenie);
