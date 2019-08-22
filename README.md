@@ -1318,3 +1318,88 @@ console.log(poslednyElement);
 const predposlednyElement = poslednyElement.previousSibling.previousSibling;
 console.log(predposlednyElement);
 ```
+
+## 40. hodnoty v DOM - textConent vs nodeValue
+- `nodeValue` vracia string z definovaneho childNodes ktori musi byt definovany pomocou [poradie_ktori_string_chcem]
+```js
+const specialnyElement = document.getElementById('special');
+console.log('specialnyElement:', specialnyElement);
+
+const hodnotaNodeValue = specialnyElement.childNodes[0].nodeValue;
+console.log('hodnotaNodeValue:', hodnotaNodeValue);
+// pomocou trim metody vieme precistit priestor pred a za selektnutym stringom
+const hodnotaNodeValueUpravena = specialnyElement.childNodes[0].nodeValue.trim();
+console.log('hodnotaNodeValueUpravena:', hodnotaNodeValueUpravena);
+```
+- `textContent` vracia string nachadazjuci sa v selektnutom elemente
+```js
+const hodnotaTextContent = specialnyElement.textContent;
+console.log('hodnotaTextContent:', hodnotaTextContent);
+```
+
+## 41. `getAttribute()` vs `setAttribute()`
+- `getAttribute(nazovatributu)` pomocou tejto metody vieme vytiahnut zo selektnuteho elementu hodnotu z definovaneho atributu
+```js
+const elementLiPrvy = document.querySelector('li');
+console.log('li element:', elementLiPrvy);
+
+const showClass = elementLiPrvy.getAttribute('class');
+const showId = elementLiPrvy.getAttribute('id');
+console.log('showClass:', showClass);
+console.log('showId:', showId);
+
+const elementA = document.querySelector('a');
+console.log('a element:', elementA);
+const showHref = elementA.getAttribute('href');
+console.log('showHref:', showHref);
+```
+- `setAttribute(nazovAtributu, hodnotaAtributu)` pomocou tejto metody vieme vlozit definovany atribut a jeho hodnotu do selektnuteho elementu
+```js
+const elementLiPosledny = document.getElementsByTagName('li')[1];
+elementLiPosledny.setAttribute('class', 'posledny');
+elementLiPosledny.setAttribute('id', 'daco');
+console.log(elementLiPosledny);
+```
+
+## 42. `className` vs `classList`
+- `className` pomocou vytiahnutej premennej vieme vlozit classy alebo ich prepisat
+```js
+const prvy = document.getElementById('prvy');
+const druhy = document.getElementById('druhy');
+const treti = document.getElementById('treti');
+
+const nazovClassy = prvy.className;
+
+console.log(nazovClassy);
+
+druhy.className = 'farba text'; // do selektnuteho elementu druhy prepisem alebo vlozim classu s definovanym nazvom
+treti.className = 'farba text'; // do selektnuteho elementu druhy prepisem alebo vlozim classu s definovanym nazvom
+```
+- `classList` tento parameter vrati pole, ktore obsahuje vsetky classy nachadzacuje sa v seleknutom elemente a dlzku `length` pola spolu s hodnotou `value` ktora obsahuje vsetky classy.
+```js
+const prvy = document.getElementById('prvy');
+const druhy = document.getElementById('druhy');
+const treti = document.getElementById('treti');
+
+const selekttretiElement = treti.classList;
+
+console.log(selekttretiElement); // vrati pole class a length a value
+```
+vramci `classList` sa nachadzaju metody: 
+- `add(nazov_classy)` ktora pridava classu
+- `remove(nazov_classy)` ktora odobera classu
+- `item(poradiaClassy_vPoli)` vrati nazov classy z pola
+- `replace(poradiaClassy_vPoli)` vrati nazov classy z pola
+- `replace(nazov_classy, novy_nazov_classy)` prepise staru classu na novu
+- `contains(nazov_classy)` vrati true alebo false podla toho ci classa existuje
+```js
+selekttretiElement.add('farba');
+selekttretiElement.remove('farba');
+
+console.log(selekttretiElement.item(1));
+
+treti.classList.replace('a', 'farba');
+
+let vysledok = treti.classList.contains('farba');
+console.log(vysledok);
+```
