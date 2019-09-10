@@ -5,8 +5,8 @@
 
 // pomocou textContent vytiahni text z posledneho li
 
-// pridal atribut class s hodnotou ahoj poslednemu li
-// pridal vytiahni tento atribut class z posledneho li
+// pridaj atribut class s hodnotou ahoj poslednemu li
+// vytiahni tento atribut class z posledneho li
 
 // pomocou className pridaj prvemu li elmentu classu 'daco'
 
