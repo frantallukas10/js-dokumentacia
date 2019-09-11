@@ -2,7 +2,7 @@
 
 ## 1. inline js
 
-`onclick` je atribút pomocou ktorého som nadefinoval inlinový javascript, kde prevolám metódu alert, v ktorej nadefinujem vstupný string, ktorý sa zobrazí v pop-upe.
+`onclick` je atribút, pomocou ktorého sme nadefinovali inlinový javascript, kde prevolám metódu alert. V nej nadefinujeme vstupný string, ktorý sa zobrazí v pop-upe.
 príklad:
 
 ```html
@@ -11,7 +11,7 @@ príklad:
 
 ## 2. interný js
 
-pridali sme atribút ID s hodnotou "btn" pre element button, vytvorili sme interný javascript pomocou html tagu "script",vo vnútri sme selectli element button pomocou DOMu, kde sme vytiahli pomocou metódy "getElementById" element s ID "btn". Následne sme definovali metódu, ktorá kontroluje eventy nad selectnutym elementom.Definovali sme v tejto metóde kontrolu nad eventom "click", kde po kliknuti má nastať metóda "alert", ktorá vykresli vstupný string.
+pridali sme atribút ID s hodnotou "btn" pre element button. Vytvorili sme interný javascript pomocou html tagu "script". Vo vnútri sme selectli element button pomocou DOMu, kde sme vytiahli pomocou metódy "getElementById" element s ID "btn". Následne sme definovali metódu, ktorá kontroluje eventy nad selectnutým elementom.Definovali sme v tejto metóde kontrolu nad eventom "click", kde po kliknutí má nastať metóda "alert", ktorá vykreslí vstupný string.
 príklad:
 
 ```HTML
@@ -45,7 +45,7 @@ príklad:
 </body>
 ```
 
-musíme vrámci načítania javascriptu použiť metódu, ktorá zabezpečí, že javascript je načítaný až po načítaní HTML.
+Vrámci načítania javascriptu musíme použiť metódu, ktorá zabezpečí, že javascript je načítaný až po načítaní HTML.
 
 ```js
 window.onload = function() {
@@ -254,7 +254,7 @@ function ahoj() {
 }
 ```
 
-Funkciu ak chceme aby sa vykonala, musíme ju zavolať, napr. takto:
+Ak chceme aby sa funkcia vykonala, musíme ju zavolať, napr. takto:
 
 ```js
 ahoj();
@@ -459,7 +459,7 @@ if (!vykonaj) {
 
 `switch()` metóda slúži na jednoduche vyhodnocovanie viacerých podmienok.
 
-`switch()` metóda očakáva vstupnú hodnotu, ktorá sa bude porovnávať s každou `case` hodnotou, ak sa hodnota rovná vstupnej hodnote vo `switch()` metóde, vykoná sa skript, ktorý je definovaný za `:` a následne pomocou `break` sa daný skript ukončí. Na konci sa vždy definuje `default:`, ktorý by mal definovať to, čo sa má udiať ak ani jedna hodnota z `case` nie je rovná vstupnej hodnote zo `switch()`
+`switch()` metóda očakáva vstupnú hodnotu, ktorá sa bude porovnávať s každou `case` hodnotou. Ak sa hodnota rovná vstupnej hodnote vo `switch()` metóde, vykoná sa skript, ktorý je definovaný za `:` a následne pomocou `break` sa daný skript ukončí. Na konci sa vždy definuje `default:`, ktorý by mal definovať to, čo sa má udiať ak ani jedna hodnota z `case` nie je rovná vstupnej hodnote zo `switch()`
 
 prerobenie 'if a else' na `switch`
 
@@ -503,7 +503,7 @@ switch (value) {
 
 ## 18. `while` cyklus v javascripte
 
-cyklus `while` má vo vnútri definovaný skript, ktorý bude vykonaný iba vtedy, ak vnútorná definovaná logika t.j. `(value <= 10)` je pravdivá, ak prestane byť pravdivá následne cyklus skončí.
+cyklus `while` má vo vnútri definovaný skript, ktorý bude vykonaný iba vtedy, ak vnútorná definovaná logika t.j. `(value <= 10)` je pravdivá. Ak prestane byť pravdivá, následne cyklus skončí.
 
 ```js
 let value1 = 1;
@@ -524,7 +524,7 @@ while (value2 > 0) {
 
 ## 19. `do while` cyklus v javascripte
 
-cyklus `do while` funguje skoro rovnako ako while, len na začiatku spusteného skriptu prvá vstupná hodnota sa neporovnáva s očakávanym vstupom a bez porovnania sa daný skript vykoná 1-krát.
+cyklus `do while` funguje skoro rovnako ako while, len na začiatku spusteného skriptu sa prvá vstupná hodnota neporovnáva s očakávanym vstupom a bez porovnania sa daný skript vykoná 1-krát.
 
 príklad:
 
@@ -573,7 +573,7 @@ console.log(value); // 99
 
 stringové vlastnosti sú:
 
-- ak ku stringu pripočítam inú hodnotu, výsledne sčítanie je string js.
+- ak ku stringu pripočítam inú hodnotu, výsledne sčítanie je string.
 
 ```js
 const value1 = 'text';
@@ -581,14 +581,14 @@ const value2 = 10;
 console.log(value1 + value2);
 ```
 
-- pomocou `length` vieme zistiť kolko písmenok obsahuje stringova premenna
+- pomocou `length` vieme zistiť koľko písmenok obsahuje stringová premenna
 
 ```js
 const value1 = 'text';
 console.log(value1.length);
 ```
 
-- `indexOf()` nájde v definovanej hodnote `veta` hľadaný string a určí jeho pozíciu a počíta aj medzeri. Začína z ľava do prava, ak sa požadovaný string nenašiel, vráti hodnotu `-1`. Ako druhý parameter vieme definovať štartovaciu pozíciu hľadania stringu.
+- `indexOf()` nájde v definovanej hodnote `veta` hľadaný string a určí jeho pozíciu a počíta aj medzery. Začína z ľava do prava. Ak sa požadovaný string nenašiel, vráti hodnotu `-1`. Ako druhý parameter vieme definovať štartovaciu pozíciu hľadania stringu.
 
 ```js
 const veta = 'janko peto hrasko iveta jarka neviem us peto';
@@ -597,7 +597,7 @@ console.log(veta.indexOf('10')); // -1
 console.log(veta.indexOf('peto', 10)); // 40
 ```
 
-- `lastIndexOf()` nájde v definovanej hodnote posledný hľadaný string a určí jeho pozíciu. Počíta aj medzeri a začína z prava do ľava, ak sa požadovaný string nenašiel, vráti hodnotu `-1`. Ako druhý parameter vieme definovať štartovaciu pozíciu hľadania stringu.
+- `lastIndexOf()` nájde v definovanej hodnote posledný hľadaný string a určí jeho pozíciu. Počíta aj medzeri a začína z prava do ľava. Ak sa požadovaný string nenašiel, vráti hodnotu `-1`. Ako druhý parameter vieme definovať štartovaciu pozíciu hľadania stringu.
 
 ```js
 const veta = 'janko peto hrasko iveta jarka neviem us peto';
@@ -622,7 +622,7 @@ const pismenko = 'Janko';
 console.log(pismenko.charAt(0)); // J
 ```
 
-- `trim()` metóda maže pred a za stringom prázdny priestor
+- `trim()` metóda maže prázdny priestor pred a za stringom. 
 
 ```js
 const inputFormText = ' janko@gáil.com   ';
@@ -640,7 +640,7 @@ const pole = ['peter', 'janko', 'dusi'];
 console.log(pole.includes('dusi')); // true
 ```
 
-- `replace()` pomocou tejto metódy viem prepísať požadovaný string na iný požadovaný string aj globálne aj neglobálne.
+- `replace()` pomocou tejto metódy viem prepísať požadovaný string na iný string. Globálne aj neglobálne.
 
 ```js
 const premenna = 'text aaa text bbb text aaa';
@@ -650,7 +650,7 @@ console.log(premenna.replace('aaa', 'bbb')); // text bbb text bbb text aaa
 console.log(premenna.replace(/aaa/g, 'bbb')); // text bbb text bbb text bbb
 ```
 
-- `slice()` a `substring()` pomocou týchto metód viem vystrihnúť požadovaný string na základe číselných súradnic pozície písmenok. `substring()` metóda je inteligentnejšia. Ak druhá vstupná hodnota je menšia ako prvá, tak sa berie druhá vstupná hodnota ako prvá
+- `slice()` a `substring()` - pomocou týchto metód viem vystrihnúť požadovaný string na základe číselných súradnic pozície písmenok. `substring()` metóda je inteligentnejšia. Ak druhá vstupná hodnota je menšia ako prvá, tak sa berie druhá vstupná hodnota ako prvá
 
 ```js
 const text = 'peter janko isiel domov';
@@ -662,7 +662,7 @@ console.log(text.slice(6, 0)); // vrati nič kedže slice nie je inteligentný a
 console.log(text.substring(6, 0)); // peter
 ```
 
-- `substr()` pomocou tejto metódy viem vystrinúť požadovaný string, kde prvý vstupný parameter je číslo, ktoré definuje začiatok vystrihovania a druhá vstupná hodnota je číslo, ktoré definuje dĺžku vyťahovaného stringu od začiatku vystrihovania
+- `substr()` pomocou tejto metódy viem vystrinúť požadovaný string, kde prvý vstupný parameter je číslo, ktoré definuje začiatok vystrihovania a druhá vstupná hodnota je číslo, ktoré definuje dĺžku vyťahovaného stringu od začiatku vystrihovania.
 
 ```js
 const text = 'peter janko isiel domov';
@@ -1129,7 +1129,7 @@ console.log('mladiProgramatori', mladiProgramatori);
 
 4. `find(predicate, index, [])`
 - ak nenájde hľadaný prvok, vráti `undefined`
-- skvele pre získanie jedinečnej hodnoty z poľa
+- skvelé pre získanie jedinečnej hodnoty z poľa
 - vráti vždy len prvú nájdenu hodnotu vrámci definovanej logiky hľadania
 ```js
 const ludia2 = [
@@ -1172,7 +1172,7 @@ console.log('scitaniePlatov', scitaniePlatov);
 const cislo = 4.56789;
 console.log(Math.floor(cislo)); // 4
 ```
-- `Math.ceil()` - zaukrúhľuje na najbližšie najväčšie celé číslo
+- `Math.ceil()` - zaokrúhľuje na najbližšie najväčšie celé číslo
 ```js
 const cislo = 4.56789;
 console.log(Math.ceil(cislo)); // 5
