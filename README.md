@@ -996,12 +996,12 @@ const spocitaj = () => {
 
     console.log('nasobokVysledok', nasobokVysledok);
   };
-  // console.log(nasobokVysledok); // nie je dostypna hodnota lebo je v inom scope
+  // console.log(nasobokVysledok); // nie je dostupna hodnota lebo je v inom scope
 
   nasob();
   return spocitajVysledok;
   console.log('toto nebude vypisane lebo mam nad sebou return');
-};// console.log(spocitajVysledok); // nie je dostypna hodnota lebo je v inom scope
+};// console.log(spocitajVysledok); // nie je dostupna hodnota lebo je v inom scope
 
 console.log(globalneCislo);
 
@@ -1373,7 +1373,7 @@ const nazovClassy = prvy.className;
 console.log(nazovClassy);
 
 druhy.className = 'farba text'; // do selektnuteho elementu druhy prepisem alebo vlozim classu s definovanym nazvom
-treti.className = 'farba text'; // do selektnuteho elementu druhy prepisem alebo vlozim classu s definovanym nazvom
+treti.className = 'farba text'; // do selektnuteho elementu treti prepisem alebo vlozim classu s definovanym nazvom
 ```
 - `classList` tento parameter vráti pole, ktoré obsahuje všetky classy nachádzajúce sa v seleknutom elemente a dĺžku `length` poľa spolu s hodnotou `value`, ktorá obsahuje všetky classy.
 ```js
@@ -1389,7 +1389,6 @@ vrámci `classList` sa nachádzajú metódy:
 - `add(nazov_classy)`, ktorá pridáva classu
 - `remove(nazov_classy)`, ktorá odoberá classu
 - `item(poradiaClassy_vPoli)` vráti názov classy z poľa
-- `replace(poradiaClassy_vPoli)` vráti názov classy z poľa
 - `replace(nazov_classy, novy_nazov_classy)` prepíše starú classu na novú
 - `contains(nazov_classy)` vráti `true` alebo `false` podľa toho, či classa existuje
 ```js
@@ -1404,3 +1403,163 @@ let vysledok = treti.classList.contains('farba');
 console.log(vysledok);
 ```
 
+## 43. `document.createElement('nazov_html_tagu')`, `document.createTextNode('nejaky string')`, `element.appendChild(childElement)` vs `document.body.insertBefore(referenciaNovyVytvorenyElement, referenciaPredKtoryElement)`, `document.body.replaceChild(novyElement, staryElement)`
+
+- `document.createElement('nazov_html_tagu')` táto metóda slúži na vytvorenie html tagu vrámci DOMu
+- `document.createTextNode('nejaky string')` táto metóda slúži na vytvorenie textu vrámci DOMu
+- `selektnutyElement.appendChild(childElement)` táto metóda slúži na vkladanie vytvorených elementov alebo textov vrámci DOMu, kde najskôr musím definovať kam chcem vložiť niečo t.j. `selektnutyElement` a čo chcem vložiť `childElement` t.j. text alebo ďalší html element.
+
+priklady:
+```js
+// vytvor prázdny element
+const vytvorenyDivElement = document.createElement('div');
+
+// vytvor text
+const vytvorenyText = document.createTextNode('nejaky vytvoreny text');
+
+// pridaj vytvorený text do vytvoreného div elementu
+vytvorenyDivElement.appendChild(vytvorenyText);
+
+// pridaj vytvorený element div s vytvoreným textom do body
+document.body.appendChild(vytvorenyDivElement);
+```
+
+ak by som chcel vytvoriť zoznam ul element so zanorenými li elementami, ktoré majú nejaký text, vyzeralo by to takto:
+
+```js
+// najskôr vytvorím ul element
+const elementUl = document.createElement('ul');
+
+// potom vytvorím li element
+const elementli1 = document.createElement('li')
+// potom vytvorím text
+const text1 = document.createTextNode('prvy')
+// potom vložím do vytvoreného elementu li vytvorený text
+elementli1.appendChild(text1);
+// potom vložím do ul elementu li element, ktorý už obsahuje text
+elementUl.appendChild(elementli1)
+
+// potom vytvorím li element
+const elementli2 = document.createElement('li')
+// potom vytvorím text
+const text2 = document.createTextNode('druhy')
+// potom vložím do vytvoreného elementu li vytvorený text
+elementli2.appendChild(text2);
+// potom vložím do ul elementu li element, ktorý už obsahuje text
+elementUl.appendChild(elementli2)
+
+// potom vytvorím li element
+const elementli3 = document.createElement('li')
+// potom vytvorím text
+const text3 = document.createTextNode('treti')
+// potom vložím do vytvoreného elementu li vytvorený text
+elementli3.appendChild(text3);
+// potom vložím do ul elementu li element, ktorý už obsahuje text
+elementUl.appendChild(elementli3)
+
+// potom vložím do body uz ul element, ktorý obsahuje li elementy aj s textami
+document.body.appendChild(elementUl);
+```
+
+kratšia verzia
+```js
+// vytvorím si pole textov
+const pole = ['prvy', 'druhy', 'treti'];
+// namapujem texty a koľko textov mám, tolko vytvorím li s textami
+pole.map(item => {
+  // potom vytvorím li element
+  const elementli = document.createElement('li');
+  // potom vytvorím text
+  const text = document.createTextNode(item);
+  // potom vložím do vytvoreného elementu li vytvorený text
+  elementli.appendChild(text);
+  // potom vložím do ul elementu li element, ktorý už obsahuje text
+  elementUl.appendChild(elementli);
+});
+// potom vložím do body ul element, ktorý obsahuje li elementy aj s textami
+document.body.appendChild(elementUl);
+```
+
+- `document.body.insertBefore(referenciaNovyVytvorenyElement, referenciaPredKtoriElement)` vkladá novo vytvorený element pred už existujúci element
+```js
+// selektnem si už existujúci element
+const slectObalovac = document.getElementById('obalovac');
+
+// vytvorím h2 element
+const elementH2 = document.createElement('h2');
+// vytvorim text
+const textH2 = document.createTextNode('somPrvy');
+// vložím do vytvoreného elementu h2 vytvorený text
+elementH2.appendChild(textH2);
+
+// vrámci body chcem vložiť novo vytvorený element h2 s textom pred existujúci element, ktorý selektujem pomocou id obalovac
+document.body.insertBefore(elementH2, slectObalovac);
+```
+- `document.body.replaceChild(novyElement, staryElement)` pomocou metódy `replaceChild()` vieme prepísať existujúci element v DOMe na novyElement
+```js
+// vytvor h2 element
+const elementH2 = document.createElement('h2');
+// vytvor text
+const textH2 = document.createTextNode('somPrvy');
+// pridaj do h2 element text
+elementH2.appendChild(textH2);
+// pridaj h2 element do body
+document.body.appendChild(elementH2);
+
+// vytvor div element
+const vytvorenyDivElement = document.createElement('div');
+// vytvor text
+const vytvorenyText = document.createTextNode('nejaky vytvoreny text');
+// pridaj vytvorený text do vytvoreného div elementu
+vytvorenyDivElement.appendChild(vytvorenyText);
+// pridaj vytvorený element div s vytvoreným textom do body
+document.body.appendChild(vytvorenyDivElement);
+
+// nahraď div element h2 elementom 
+document.body.replaceChild(elementH2, vytvorenyDivElement);
+```
+
+## 44. `textContent` vs `innerHTML`
+- `selektnutyElement.textContent` vieme získať textový obsah elementu a jeho potomkov, alebo definovať novy text pre elementLi
+```js
+const pole = ['prvy', 'druhy', 'treti'];
+const elementUl = document.createElement('ul');
+
+pole.map(text => {
+  const elementLi = document.createElement('li');
+  // const textElementLi = document.createTextNode(text);
+  // elementLi.appendChild(textElementLi);
+  // alebo pomoocu textContent
+  elementLi.textContent = text; // vložím string do elementu
+  elementUl.appendChild(elementLi);
+});
+
+document.body.appendChild(elementUl);
+console.log(elementUl.textContent); // prvydruhytreti
+
+const krabica = document.createElement('div');
+krabica.textContent = 'text v krabici pred zoznamom cisel vkada insertBefore()'; // vložím string do elementu
+document.body.insertBefore(krabica, zoznam);
+```
+
+- `seleknutyElement.innerHTML` nastavuje alebo vracia HTML obsah elementu
+```js
+console.log(elementUl.innerHTML); // <li>prvy</li><li>druhy</li><li>treti</li>
+const zoznam = document.createElement('ul');
+zoznam.innerHTML = `<li class="item">1</li><li class="item">2</li>`;
+document.body.appendChild(zoznam);
+```
+
+## 45. Zmena CSS pomocou style vlastností 
+
+```js
+const nadpis = document.getElementById('nadpis');
+
+console.log(nadpis.style);
+
+nadpis.style.fontSize = '12px';
+nadpis.style.background = 'blue';
+nadpis.style.color = 'white';
+```
+
+## 46. Event Listeners (eventovi posluchač) a event object

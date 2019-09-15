@@ -18,7 +18,7 @@ window.onload = () => {
 
   selekttretiElement.remove('farba');
 
-  console.log(selekttretiElement.item(1));
+  console.log(selekttretiElement.item(0));
 
   treti.classList.replace('a', 'farba');
 
