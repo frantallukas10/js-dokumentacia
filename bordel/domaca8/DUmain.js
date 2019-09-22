@@ -60,4 +60,10 @@ window.onload = () => {
   color: red;
  }
  */
+
+  zoznam.style.fontWeight = 'bold';
+  zoznam.style.fontSize = '12px';
+  zoznam.style.textTransform = 'upperCase';
+  zoznam.style.textDecoration = 'underline';
+  zoznam.style.color = 'red';
 };

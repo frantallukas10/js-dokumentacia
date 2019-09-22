@@ -17,9 +17,9 @@ príklad:
 ```HTML
 <button id="btn">Click</button>
 <script>
-    document.getElementById("btn").addEventListener("click", function () {
-        alert('ahoj spustil som interny javascript')
-    })
+document.getElementById("btn").addEventListener("click", function () {
+  alert('ahoj spustil som interny javascript')
+})
 </script>
 ```
 
@@ -1520,7 +1520,7 @@ document.body.replaceChild(elementH2, vytvorenyDivElement);
 ```
 
 ## 44. `textContent` vs `innerHTML`
-- `selektnutyElement.textContent` vieme získať textový obsah elementu a jeho potomkov, alebo definovať novy text pre elementLi
+- `selektnutyElement.textContent` vieme získať textový obsah elementu a jeho potomkov, alebo definovať nový text pre elementLi
 ```js
 const pole = ['prvy', 'druhy', 'treti'];
 const elementUl = document.createElement('ul');
@@ -1563,3 +1563,224 @@ nadpis.style.color = 'white';
 ```
 
 ## 46. Event Listeners (eventovi posluchač) a event object
+
+`selectElement.addEventListener(event, myFunction, boolean)` - metoda sa pouziva na vytvaranie posluchaca, ktory pocuva na dany event a vykona moju definovanu funkciu</br>
+[info o trejtej moznosti v addEventListener metode](https://www.w3schools.com/js/tryit.asp?filename=tryjs_addeventlistener_usecapture)
+
+Priklad posluchaca ktory kontroluje event klik nad celym DOMom
+```js
+document.addEventListener('click', () => console.log('ci pana klikol si dakde'));
+```
+Namiesto dokumentu môžeme použiť aj selektnutý element. Napr.:
+
+```js
+const btn = document.getElementById('btn');
+btn.addEventListener('click', e => {
+  // co chcem vykonat po kliknuti
+  console.log('event', e)
+}
+```
+
+`event` je string hodnota, ktora definuje za akych podmienok ma byt vykonanana nasa definovana funkcia. Eventy sa zachytavaju vramci klavesnici a mysi
+
+Poznáme eventy napr.:
+
+- eventy vramci mysi 
+```js
+const item = document.getElementById('item');
+
+item.addEventListener('click', function() {
+  console.log('Klikol som');
+});
+item.addEventListener('dblclick', function() {
+  console.log('dblclick 2x som klikol');
+});
+item.addEventListener('mousedown', function() {
+  console.log('mousedown nastane ked kliknem nad prvkom');
+});
+item.addEventListener('mouseup', function() {
+  console.log('mouseup ked pouzivatel uvolni tlacidlo mysi nad prvkom');
+});
+item.addEventListener('mouseout', function() {
+  console.log('mouseout odisiel som z elementu');
+});
+item.addEventListener('mouseover', function() {
+  console.log(
+    'mouseover ked sa kurzor presunie nad prvok alebo na jedno z jeho deti'
+  );
+});
+item.addEventListener('mouseenter', function() {
+  console.log('mouseeneter ked sa kurzor presunie na prvok');
+});
+item.addEventListener('mouseleave', function() {
+  console.log('mouseleave ked sa ukazovatel presunie z prvku');
+});
+item.addEventListener('mousemove', function() {
+  console.log('mousemove ked sa kurzor pohybuje nad prvkom');
+});
+```
+
+- klavesove eventy vramci Input elementu
+```js
+const input1 = document.getElementById('input1');
+input1.addEventListener('keypress', function() {
+  console.log(e.target.value); // co napisem do inputu viem to ziskat cez value
+  console.log('stlacil som nieco na klavesnici okrem sipiek');
+});
+
+const input2 = document.getElementById('input2');
+input2.addEventListener('keydown', function() {
+  console.log('stlacil som sipku dole');
+});
+
+const input3 = document.getElementById('input3');
+input3.addEventListener('keyup', function() {
+  console.log('stlacil som sipku hore');
+});
+
+const input4 = document.getElementById('input4');
+input4.addEventListener('focus', function() {
+  console.log('vosiel som s mysou do inputu');
+});
+
+input4.addEventListener('blur', function() {
+  console.log('odisiel som z focusnuteho inputu');
+});
+
+input4.addEventListener('cut', function() {
+  console.log('ked oznacim text v inpute a stalcim ctrl+x');
+});
+
+input4.addEventListener('paste', function() {
+  console.log('ked skopirujem text pomocou stalcenim ctrl+v');
+});
+
+const input5 = document.getElementById('input5');
+input5.addEventListener('input', function() {
+  console.log('hocico urobim vramci inputu');
+});
+
+const input6 = document.getElementById('input6');
+input6.addEventListener('change', function() {
+  console.log('ked vlozim jedno pismenko a odkliknem sa z inputu');
+});
+```
+
+[linka k eventom](https://www.w3schools.com/jsref/dom_obj_event.asp)
+
+`event object` alebo `e` - z tohto objektu vieme vytiahnúť target, ktorý nám určí, nad akým elementom sa vykonal event. Ďalej className, classList, Id, type alebo time vieme vytiahnut z target
+
+```js
+const btn = document.getElementById('btn');
+btn.addEventListener('click', e => {
+  console.log('event', e);
+  console.log('target nad akym elementom sa vykonal event click', e.target);
+  console.log('className', e.target.className);
+  console.log('classList', e.target.classList);
+  console.log('id', e.target.id);
+  console.log('type', e.target.type);
+  console.log('cas cliknutia', e.timeStamp);
+});
+```
+
+ak mam dve definovane addEventListener metody a su sucastne zavolane eventy a chcem aby sa vykonala iba jedna funkcia pouzijeme vramci eventu metodu `stopPropagation()`
+```js
+document.getElementById('btn').addEventListener('click', e => {
+  e.stopPropagation();
+  console.log('klikol som')
+}); 
+
+document.addEventListener('click', e => {
+  console.log('klikol som nad dokumentom');
+});
+```
+
+ak ma html tag po vyvolani evnetu vlastnu funkciu (napr. linka s definovanym href atributom po kliknuti presmeruje pouzivatela na inu stranku) vieme taketo funkcionality vypnut pomocou definovania metody `preventDefault()`
+```js
+document.getElementById('a').addEventListener('click', e => {
+  e.preventDefault();
+  console.log('klikol som')
+}); 
+
+document.addEventListener('click', e => {
+  console.log('klikol som nad dokumentom');
+});
+```
+
+## 47. `localStorage.setItem()`, `localStorage.getItem()`, `JSON.stringify()`, `JSON.parse()`
+
+
+- `localStorage.setItem(definujem_nazov_kluca, definujem hodnotu)` sluzi na ukladanie dat do local storage v application devtools
+```js
+localStorage.setItem('name', 'Janko');
+localStorage.setItem('age', '21');
+```
+
+- `localStorage.getItem(definujem_nazov_kluca)` sluzi na zistenie dat ulozenych v local storage v application devtools kde nam staci definovat key kluc podla ktoreho viem vytiahnut databaseHeslo
+```js
+const name = localStorage.getItem('name');
+const age = localStorage.getItem('age');
+console.log(name, age);
+```
+
+ak by som chcel vlozit do local storage viacej hodnot ako pole alebo objekt musim pouzit JSON typ
+pomocou `JSON.stringify()` viem premenit typ objekt alebo pole na JSON a pomocou `JSON.parse()` viem dane data previest naspat z JSON formatu na objekt alebo pole na JSON
+
+```js
+const pole = [
+  'Janko',
+  21,
+  {
+    name: 'janko',
+   age: 10
+  }
+];
+const poleAkoJson = JSON.stringify(pole);
+console.log('JSON.stringify(pole):', poleAkoJson);
+localStorage.setItem('poleAkoJson', poleAkoJson);
+
+console.log(localStorage.getItem('poleAkoJson'));
+console.log(JSON.parse(localStorage.getItem('poleAkoJson')));
+const objekt = {
+  name: 'janko',
+  cislo: 10,
+  objekt: {},
+  pole: []
+};
+const objektAkoJson = JSON.stringify(objekt);
+console.log('JSON.stringify(objekt):', objektAkoJson);
+localStorage.setItem('objektAkoJson', objektAkoJson);
+
+console.log(localStorage.getItem('objektAkoJson'));
+console.log(JSON.parse(localStorage.getItem('objektAkoJson')));
+```
+## 48. Forms
+form HTML tagy by mali byt obalene vramci `<form>` html tagu, ktori vie zachytit vnutorni submit event vramci `<input type="submit" value="submit" />`
+
+```js
+const form = document.getElementById('form');
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const name = document.getElementById('name').value;
+  const number = document.getElementById('number').value;
+  const password = document.getElementById('password').value;
+
+  console.log(
+    `Your name is ${name} amd your number is ${number} and your password is ${password}`
+  );
+});
+```
+## 49. DOM project with BOOTSTRAP 4
+[bootstrap](https://link](https://getbootstrap.com/)<br>
+[zadarmo obrazky](https://www.pexels.com/photo/)<br>
+[zadarmo videa](https://www.pexels.com/videos/)<br>
+[google fonts](https://fonts.google.com)<br>
+[farby](https://coolors.co/121619-2d4739-09814a-bcb382-e5c687)<br>
+[ikonky](https://fontawesome.com/start)
+
+vramci bootstrapu zacinam s linkovanim<br>
+[zaciatok projektu linky a konfiguracia](https://getbootstrap.com/docs/4.3/getting-started/introduction/)<br>
+potom definujem zaciatocny obsah layoutu<br>
+[container vs container-fluid a Responsive breakpoints](https://getbootstrap.com/docs/4.3/layout/overview/)<br>
+

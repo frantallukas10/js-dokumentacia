@@ -1,0 +1,26 @@
+:root {
+  --mainGreen: #09814a;
+  --mainFontSize: 40px;
+}
+
+html,
+body {
+  font-family: 'Roboto', sans-serif;
+  color: var(--mainGreen);
+}
+
+h1 {
+  font-size: var(--mainFontSize);
+}
+
+.container {
+  border: 1px solid red;
+}
+
+.container div {
+  border: 1px solid black;
+}
+
+.container-fluid {
+  border: 1px solid blue;
+}
