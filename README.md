@@ -555,7 +555,7 @@ príklad:
 let value = 99; // tato hodnota je definovana mimo scopu cyklu for preto vonku value á vždy 99
 
 for (let value = 0; value < 10; value++) {
-  // toto je vnutorny scope cyklu for ktori nevidi ze value je 99
+  // toto je vnutorny scope cyklu for ktory nevidi ze value je 99
   console.log(`cislo je ${value}`);
 }
 
@@ -1772,7 +1772,7 @@ form.addEventListener('submit', e => {
 });
 ```
 ## 49. DOM project with BOOTSTRAP 4
-[bootstrap](https://link](https://getbootstrap.com/)<br>
+[bootstrap](https://getbootstrap.com/)<br>
 [zadarmo obrazky](https://www.pexels.com/photo/)<br>
 [zadarmo videa](https://www.pexels.com/videos/)<br>
 [google fonts](https://fonts.google.com)<br>
@@ -1783,4 +1783,20 @@ vramci bootstrapu zacinam s linkovanim<br>
 [zaciatok projektu linky a konfiguracia](https://getbootstrap.com/docs/4.3/getting-started/introduction/)<br>
 potom definujem zaciatocny obsah layoutu<br>
 [container vs container-fluid a Responsive breakpoints](https://getbootstrap.com/docs/4.3/layout/overview/)<br>
+
+## 50. random generator farieb
+![alt](./lessons/50/Screenshot.png)<br>
+[rieselnie](./lessons/50/index.html)
+
+## 51. random generator citatov
+![alt](./lessons/51/Screenshot.png)<br>
+[rieselnie](./lessons/51/index.html)
+
+## 52. Email a password validacia
+![alt](./lessons/52/Screenshot.png)<br>
+[rieselnie](./lessons/52/index.html)
+
+## 53. Image slider
+![alt](./lessons/53/Screenshot.png)<br>
+[rieselnie](./lessons/53/index.html)
 

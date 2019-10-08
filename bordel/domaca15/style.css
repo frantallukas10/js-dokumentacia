@@ -1,0 +1,17 @@
+:root {
+  --mainWhite: #f2fdff;
+  --mainBlue: #3e92cc;
+}
+
+.max-height {
+  min-height: 100vh;
+}
+
+.body {
+  background-color: var(--mainWhite);
+}
+
+.row div {
+  border: 1px solid red;
+  height: 50px;
+}

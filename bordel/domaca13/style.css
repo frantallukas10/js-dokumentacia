@@ -1,0 +1,24 @@
+html,
+body {
+  height: 100%;
+}
+
+.body {
+  background-color: rgb(135, 193, 200);
+  text-align: center;
+}
+
+.container {
+  background-color: rgb(230, 222, 211);
+  display: inline-block;
+  max-width: 500px;
+}
+
+.newColor {
+  background-color: rgb(135, 193, 200);
+  border: rgb(135, 193, 200);
+}
+
+#info {
+  color: rgb(135, 193, 200);
+}

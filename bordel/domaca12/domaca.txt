@@ -1,0 +1,2 @@
+domaca 2
+vytvor si html, style kostru stranky podla obrazka dizajn doamca 2 s tym ze pouzijes linkovany boostrap, fontawesom a google fon

@@ -1,0 +1,20 @@
+vytvoris si pole s cestami k obrazkom
+nasledne ak kliknem na btn v lavo zmeni sa aktualna src hodnota pre image na novy obrazok ktory budes vytahovat z toho pola
+
+const obrazky = ['a','b','c','d']
+let aktualnahodnota = 0
+let aktualnyObrazok = obrazky[aktualnahodnota]
+
+posluchac pre butonLavo ak na neho kliknem prepisem aktualnyObrazok na novu hodnotu -1
+po odcitani aktualnahodnota--
+if(aktualnahodnota < 0) {
+  aktualnahodnota = 3
+  aktualnyObrazok = obrazky[aktualnahodnota]
+}
+
+posluchac pre butonPravo ak na neho kliknem prepisem aktualnyObrazok na novu hodnotu +1
+po pripocitani aktualnahodnota++
+if(aktualnahodnota > obrazky.length) {
+  aktualnahodnota = 0
+  aktualnyObrazok = obrazky[aktualnahodnota]
+}
