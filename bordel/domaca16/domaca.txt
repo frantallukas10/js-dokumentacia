@@ -1,0 +1,10 @@
+vytvor si input ktori bude sluzit na definovanie nazvu ulohy, id="uloha"
+
+pod neho si vytvor button pridaj ulohu ak kliknem na tento button zoberiem z inputu s id="uloha" jeho hodnotu a nasledne vlozim do ul nove li, ktore bude obsahovat hodnotu z inputu plus ktomuto textu bude pridany button X ktori po kliknuti dokaze zmazat danu ulohu
+
+vytvor si dalsi input ktori bude sluzit na filtrovanie vytvorenych uloch, ktori bude mat id="filter"
+tento input ak napisem nejaky vstup bude kontrolvoat ci sa tato hodnota nenachadza vo vytvorenych li ktore bude v zozname ul
+
+vytvor ul element do ktoreho bude vkladat li elementi spolu s hodnotaou a buttonom X
+
+pod neho button ktori bude sluzit na vymazanie vstupnej hodnoty z inputu s id="filter"

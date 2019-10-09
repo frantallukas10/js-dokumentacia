@@ -1114,6 +1114,7 @@ const ludia = [
 const mladyludia = ludia.filter(clovek => {
   return clovek.vek <= 30;
 });
+
 console.log('mladyludia', mladyludia);
 
 const programatori = ludia.filter(clovek => {
@@ -1800,3 +1801,8 @@ potom definujem zaciatocny obsah layoutu<br>
 ![alt](./lessons/53/Screenshot.png)<br>
 [rieselnie](./lessons/53/index.html)
 
+## 54. Image slider
+![alt](./lessons/54/domaca.png)<br>
+[rieselnie](./lessons/54/index.html)
+
+## 55. Task List pridavanie ulohu
