@@ -9,6 +9,7 @@ window.onload = () => {
     if (taskInputValue.trim().length === 0) {
       return M.toast({ html: 'Your input is empty. Please define!' });
     }
+
     const li = document.createElement('li');
     const span = document.createElement('span');
     const vytvorenyText = document.createTextNode(taskInputValue);
@@ -17,15 +18,25 @@ window.onload = () => {
     li.appendChild(span);
 
     const link = document.createElement('a');
-    link.href = '#';
+    taskList;
+    link.href = `#`;
     link.className = 'orange-text secondary-content delete-item';
     link.innerHTML = '<i class="material-icons">add</i>';
     li.appendChild(link);
-
-    link.addEventListener('click', e => {
-      e.target.parentElement.previousSibling.parentElement.remove();
-    });
     taskList.appendChild(li);
+  });
+
+  document
+    .getElementsByClassName('collection')[0]
+    .addEventListener('click', e => {
+      (e.target.classList.contains('material-icons') ||
+        e.target.classList.contains('orange-text')) &&
+        confirm('Chces zmazat ulohu?') &&
+        e.target.parentElement.parentElement.remove();
+    });
+
+  document.getElementById('clearTask').addEventListener('click', () => {
+    taskList.innerHTML = null;
   });
 
   document.getElementById('filter').addEventListener('keyup', e => {

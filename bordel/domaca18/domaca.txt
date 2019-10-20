@@ -1,0 +1,8 @@
+vytvor input, do ktoreho ked napisem v anglictine farbu zmeni sa farba pozadia na tuto farbu pri odideni z inputu
+
+vytvor btn, ktory po kliknuti zoberie hodnotu z inputu a vytvori div element s tymto textom pod btn za kazdym klikom sa vytvori nove divko so selektnutym textom z inputu
+
+vytvor input, ktory bude pod btn ak napisem do inputu ano vypise mi v alerte nie
+vytvor div element s sirkou a vyskou 500px a farbou pozadia blue styli pridaj pomocou javascriptu
+ak budem nad tymto divkom mysou zmenim farbu pozadia tohto divka na oranzovu ak odide bude znova blue
+

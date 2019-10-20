@@ -1761,6 +1761,7 @@ form HTML tagy by mali byt obalene vramci `<form>` html tagu, ktori vie zachytit
 ```js
 const form = document.getElementById('form');
 
+
 form.addEventListener('submit', e => {
   e.preventDefault();
   const name = document.getElementById('name').value;
@@ -1805,4 +1806,7 @@ potom definujem zaciatocny obsah layoutu<br>
 ![alt](./lessons/54/domaca.png)<br>
 [rieselnie](./lessons/54/index.html)
 
-## 55. Task List pridavanie ulohu
+## 55. Task List pridavanie uloh, mazanie jednotlivej ulohy, filtrovanie uloh, zmazanie vsetkych uloh
+![alt](./lessons/55/uloha.png)<br>
+![alt](./lessons/55/uloha-dalej.png)<br>
+[rieselnie](./lessons/55/index.html)
