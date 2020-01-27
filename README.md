@@ -1786,27 +1786,207 @@ vramci bootstrapu zacinam s linkovanim<br>
 potom definujem zaciatocny obsah layoutu<br>
 [container vs container-fluid a Responsive breakpoints](https://getbootstrap.com/docs/4.3/layout/overview/)<br>
 
-## 50. random generator farieb
-![alt](./lessons/50/Screenshot.png)<br>
-[rieselnie](./lessons/50/index.html)
 
-## 51. random generator citatov
-![alt](./lessons/51/Screenshot.png)<br>
-[rieselnie](./lessons/51/index.html)
+## 50. Objekty a jeho schopnosti (this, factory functions, constructor, prototype, find, new, object.create(), dedičnosť, call function, es6 class syntax)
 
-## 52. Email a password validacia
-![alt](./lessons/52/Screenshot.png)<br>
-[rieselnie](./lessons/52/index.html)
+- [vytvaranie objektu](./lessons/50/zaklady)
+```js
+const clovek = {
+  name: 'Janko',
+  age: 15,
+  married: false,
+  children: ['Anka', 'Ferko'],
+  hello: () => {
+    console.log('ahoj, volam sa Janko');
+  },
+  ['last-name']: 'Balog'
+};
+```
+zobrazenie celého obsahu v objekte
+```js
+console.log(clovek);
+```
 
-## 53. Image slider
-![alt](./lessons/53/Screenshot.png)<br>
-[rieselnie](./lessons/53/index.html)
+vytiahnutie jednej hodnoty z objektu
+```js
+console.log(clovek.name);
+console.log(clovek['age']);
+console.log(clovek['last-name']);
+const prveDieta = clovek.children[0];
+console.log(prveDieta);
+clovek.hello();
+```
 
-## 54. Image slider
-![alt](./lessons/54/domaca.png)<br>
-[rieselnie](./lessons/54/index.html)
+prepisanie hodnoty v objekte
+```js
+clovek.married = true;
+clovek['last-name'] = 'Nove priezvisko'
+```
 
-## 55. Task List pridavanie uloh, mazanie jednotlivej ulohy, filtrovanie uloh, zmazanie vsetkych uloh
-![alt](./lessons/55/uloha.png)<br>
-![alt](./lessons/55/uloha-dalej.png)<br>
-[rieselnie](./lessons/55/index.html)
+- pridanie nového parametra s hodnotou
+```js
+clovek.city = 'Michalovce';
+```
+
+- zmazanie parametra s hodnotou
+```js
+delete clovek.married;
+```
+
+- `this` je kľúčové slovo v js ktoré odkazuje (referuje) na objekt v ktorom je funkcia volaná, ku ktorému patrí teda v ktorom scope sa nachádza. [priklad](./lessons/50/keyword-this)
+```js
+const john = {
+  name: 'Janko',
+  ['lastName']: 'Balog',
+  fullname: function() {
+    console.log(`Volám sa ${this.name} ${this.lastName}`);
+  }
+  // pre es6 arrow function zapis `this` nema dosah do scopu nasho objektu clovek
+  // fullname: () => {
+  //   console.log(`Volám sa ${this.name} ${this.lastName}`);
+  // }
+};
+
+john.fullname();
+
+window.name = 'Ferko';
+window.lastName = 'Mrkvička';
+console.log(this);
+```
+- funkcia ako tovareň na recyklovanie opakujuceho sa kódu. [priklad](./lessons/50/object-function)
+```js
+function createPerson(name, lastName) {
+  return {
+    name: name,
+    lastName: lastName,
+    fullname: function() {
+      console.log(`Volám sa ${this.name} ${this.lastName}`);
+    }
+  };
+}
+
+createPerson('David', 'Danko').fullname();
+
+const danko = createPerson('David', 'Danko');
+const jozef = createPerson('Jozef', 'Danko');
+const ferko = createPerson('Ferko', 'Danko');
+
+danko.fullname();
+jozef.fullname();
+ferko.fullname();
+```
+
+- `funkcia ako objekt` ak nazov funkcie zacina velkym pismenom (`CreatePerson`) vieme ze ide o definovanie objektu ktorí reprezentuje construstor, ak chceme vytvoriť inštanciu tohto objektu musime použiť prikaz `new` (`new CreatePerson(očakavane vstupne hodnoty)) [priklad](./lessons/50/objekt-function-constructor)
+```js
+function CreatePerson(name, lastName) {
+  this.name = name;
+  this.lastName = lastName;
+  this.fullname = function() {
+    console.log(`Volám sa ${this.name} ${this.lastName}`);
+  };
+}
+
+const danko = new CreatePerson('David', 'Danko'); // inštanciu objektu CreatePerson
+const jozef = new CreatePerson('Jozef', 'Danko'); // inštanciu objektu CreatePerson
+const ferko = new CreatePerson('Ferko', 'Danko'); // inštanciu objektu CreatePerson
+
+danko.fullname();
+jozef.fullname();
+ferko.fullname();
+
+console.log(danko.constructor);
+
+const bob = {};
+console.log(bob.constructor);
+const list = [];
+console.log(list.constructor);
+const sayHi = function() {};
+console.log(sayHi.constructor);
+
+const denis = new danko.constructor('denis', 'postrah'); // inštanciu objektu CreatePerson
+
+console.log(denis);
+denis.fullname();
+```
+
+- `prototype` pomocou tohto zapisu vieme dopĺňať obsah constructoru daného objektu. [priklad](./lessons/50/objekt-proptype)
+
+```js
+function CreateStudent(name, lastName, role) {
+  this.name = name;
+  this.lastName = lastName;
+  this.role = role;
+}
+
+const john = new CreateStudent('John', 'Dusi', 'student');
+
+CreateStudent.prototype.school = null;
+john.school = 'super duper školy';
+
+console.log(john);
+```
+
+- `Object.getPrototypeOf(instanciaClassy)` v `instanciaClassy.constructor.prototype` takýmto spôsobom viem vyťahovať hodnoty z classy [priklad](./lessons/50/objekt-get-data)
+
+```js
+function Student(name, lastName, rola) {
+  this.name = name;
+  this.lastName = lastName;
+  this.rola = rola;
+}
+
+Student.prototype.school = 'tuke';
+Student.prototype.ahoj = function() {
+  console.log(
+    `ahoj, ja som ${this.name} ${this.lastName} ${this.rola} ${this.school}`
+  );
+};
+
+const janko = new Student('Janko', 'Traktorista', 'student');
+const ferko = new Student('Ferko', 'Traktorista', 'student');
+
+console.log(janko);
+console.log(janko.constructor);
+console.log(janko.constructor.prototype);
+console.log(Object.getPrototypeOf(janko));
+```
+
+- obash funkcii vramci konštruktora `constructor`
+```js
+console.log(Object.getPrototypeOf(Object.getPrototypeOf(janko)));
+```
+
+- objekt alebo pole `{}` vs `[]` vrámci domu maju nadefinované metódy, ktoré nám umožňujú pracovať z objektom alebo polom ak si ich chcem vypísať viem sa spýtať pomocou `construcotr` pred objekt alebo pole aké má definované metódy takto:  [priklad](./lessons/50/objekt-array-example-object-consturtor)
+```js
+const list = []; // mam definované pole
+console.log(list.constructor); // vypýtam si obsah pola (krabičky)
+console.log(Object.getPrototypeOf(list)); // spýtam sa mojej prázdnej krabičky čo sa s ňou dá robiť
+console.log(Object.getPrototypeOf(Object.getPrototypeOf(list))); // spýtam sa krabičky ktorá ma v sebe metody čo sa dá robiť s metódami
+```
+
+- `Object.create(nazovObjektu)` inštanciu objektu vieme vytvoriť viacerímy spôsobmi [priklad](./lessons/50/objekt-create)
+
+```js
+const clovek = {
+  ahoj: function() {
+    console.log(`Volám sa ${this.name} ${this.lastName}`);
+  }
+};
+
+// 1 priklad
+const janko = Object.create(clovek);
+janko.name = 'Janko';
+janko.lastName = 'Traktorista';
+console.log(janko);
+janko.ahoj();
+
+// 2 priklad
+const sona = Object.create(clovek, {
+  name: { value: 'Sona' },
+  lastName: { value: 'Velka' }
+});
+
+sona.ahoj();
+```
+- inštancia classy teda objektu vytvára prepojenie medzi definovanými parametrami v objekte `this.name = name` a vstupnými hodnotami ktore sa definuju pri vytvarani inštancii. Teda parametre dedia vstupne hodnoty a vytváraju nový objekt s uloženými hodnotami.
+
