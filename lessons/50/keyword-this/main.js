@@ -55,3 +55,13 @@ const ferko = createPerson('Ferko', 'Danko');
 danko.fullname();
 jozef.fullname();
 ferko.fullname();
+
+// function Clovek(name) {
+//   this.name = name;
+// }
+
+// const janko = new Clovek('Janko');
+// const peto = new Clovek('Peto');
+
+// console.log(peto);
+// console.log(janko);
