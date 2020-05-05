@@ -48,8 +48,8 @@ príklad:
 Vrámci načítania javascriptu musíme použiť metódu, ktorá zabezpečí, že javascript je načítaný až po načítaní HTML.
 
 ```js
-window.onload = function() {
-  document.getElementById('btn').addEventListener('click', function() {
+window.onload = function () {
+  document.getElementById('btn').addEventListener('click', function () {
     alert('ahoj spustil som externy nacitany z onload javascript');
   });
 };
@@ -71,11 +71,15 @@ console.log(20);
 ```
 
 ## 6. jednoriadkový a viacriadkový komentár
+
 - jednoriadkový komentár
+
 ```js
 // console.log(1);
 ```
+
 - viacriadkový komentár
+
 ```js
 /*
 function superDuper() {
@@ -211,7 +215,7 @@ let name;
 
 ```js
 let array = ['Janko'];
-let log = function(a) {
+let log = function (a) {
   console.log(a);
 };
 let object = { name: 'Janko' };
@@ -281,7 +285,7 @@ console.log(third);
 Funkcie vieme definovať aj s anonymnou funkciou takto:
 
 ```js
-const add = function(num1, num2) {
+const add = function (num1, num2) {
   let result = num1 + num2;
   return result;
 };
@@ -299,9 +303,9 @@ const person = {
   education: false,
   married: true,
   siblings: ['sister', 'brother'],
-  greeting: function() {
+  greeting: function () {
     console.log('Hello my name is Janko!!!');
-  }
+  },
 };
 ```
 
@@ -343,7 +347,7 @@ person.age = 43;
 person.education = [];
 person.married = false;
 person.siblings = undefined;
-person.greeting = function() {
+person.greeting = function () {
   console.log('Hello my name is Peto!!!');
 };
 ```
@@ -622,7 +626,7 @@ const pismenko = 'Janko';
 console.log(pismenko.charAt(0)); // J
 ```
 
-- `trim()` metóda maže prázdny priestor pred a za stringom. 
+- `trim()` metóda maže prázdny priestor pred a za stringom.
 
 ```js
 const inputFormText = ' janko@gáil.com   ';
@@ -729,6 +733,7 @@ Metódy:
 `conncat()`, `reverse()`, `shift()`, `pop()`, `unshift()`, `push()`, `splice()`, `slice()`
 
 - `concat()` slúži na spájanie polí do jedneho poľa
+
 ```js
 let names = ['john', 'bob', 'barry', 'olga', 'ben'];
 
@@ -738,13 +743,15 @@ console.log(allNames); // [ 'john', 'bob', 'barry', 'olga', 'ben', 'banan', 'ces
 ```
 
 - `reverse()` slúži na prehodenie poradia prvkov v poli
+
 ```js
 let names = ['john', 'bob', 'barry', 'olga', 'ben'];
 
 console.log(names.reverse()); // [ 'ben', 'olga', 'barry', 'bob', 'john' ]
 ```
 
-- `shift()` služí na odstránenie prvého prvku z poľa 
+- `shift()` služí na odstránenie prvého prvku z poľa
+
 ```js
 let names = ['john', 'bob', 'barry', 'olga', 'ben'];
 
@@ -762,6 +769,7 @@ console.log(names); // [ ]
 ```
 
 - `pop()` slúži na odstránenie posledného prvku z poľa
+
 ```js
 let names = ['john', 'bob', 'barry', 'olga', 'ben'];
 
@@ -779,6 +787,7 @@ console.log(names); // [ ]
 ```
 
 - `unshift()` služí na vkladanie prvku do poľa, ktoré bude vložené vždy na začiatok poľa
+
 ```js
 let names = ['john', 'bob', 'barry', 'olga', 'ben'];
 
@@ -790,6 +799,7 @@ console.log(names); // [ 'hruska', 'jablko', 'john', 'bob', 'barry', 'olga', 'be
 ```
 
 - `push()` služi na vkladanie prvku do poľa, ktoré bude vložene vždy na konci poľa
+
 ```js
 let names = ['john', 'bob', 'barry', 'olga', 'ben'];
 
@@ -798,6 +808,7 @@ console.log(names); // [ 'john', 'bob', 'barry', 'olga', 'ben', 'jablko' ]
 ```
 
 - `splice()` služi na doplnenie alebo prepísanie prvkov v poli
+
 ```js
 let names1 = ['john', 'bob', 'barry', 'olga', 'ben'];
 names1.splice(2, 0, 'jablko', 'hruska');
@@ -809,6 +820,7 @@ console.log(names2); // [ 'banan', 'pomaranc', 'citron', 'kiwi' ]
 ```
 
 - `slice()` sluzi na odstránenie prvkov z poľa. Pri tejto metóde musím uložiť stav novej zmeny
+
 ```js
 let names1 = ['john', 'bob', 'barry', 'olga', 'ben'];
 names1 = names1.slice(1);
@@ -819,7 +831,7 @@ names2 = names2.slice(1, 2);
 console.log(names2); // [ 'pomaranc' ]
 ```
 
-## 24. Polia a `for` cyklus 
+## 24. Polia a `for` cyklus
 
 pomocou `for` cyklu viem jednoducho vytiahnúť všetky prvky z poľa:
 
@@ -831,8 +843,8 @@ for (let i = 0; i < names.length; i++) {
 }
 ```
 
-## 25.  Funkcie `return`, polia a `for` cyklus
-  
+## 25. Funkcie `return`, polia a `for` cyklus
+
 ```js
 let firstArray = ['1', '2', '3'];
 let secondArray = ['4', '5', '6'];
@@ -880,7 +892,7 @@ console.log(number2); // NaN
 
 ## 28. pravdivé a nepravdivé výroky
 
-pravdivé: `"", '', ``, 1, -1, true`
+pravdivé: ` "", '', ``, 1, -1, true `
 nepravdivé: `0,-0,NaN, false, null, undefined, !true (negaciou viem spravit nepravdivy vyrok z pravdiveho)`
 
 ```js
@@ -904,24 +916,26 @@ if (text) {
 
 const ocakvanaHodnota = 'nejaky text';
 ocakvanaHodnota && console.log(ocakvanaHodnota);
-
 ```
 
 ## 29. ternárne operátory
 
 - unárny operátor typeof
+
 ```js
 let text = 'some text';
 console.log(typeof text);
 ```
 
 - binárny operátor
+
 ```js
 let number = 3;
 let number2 = 2 + 5;
 ```
 
 - ternárny operátor `condition ? (run if true) : (run if false)`
+
 ```js
 let condition = 2 > 5;
 if (condition) {
@@ -935,6 +949,7 @@ condition ? console.log('pravda') : console.log('nepravda');
 ## 30. globálny scope
 
 premenné z vonkajšieho bloku kódu sa nazývajú global scope
+
 ```js
 let name = 'bob';
 name = 'peter';
@@ -1001,7 +1016,7 @@ const spocitaj = () => {
   nasob();
   return spocitajVysledok;
   console.log('toto nebude vypisane lebo mam nad sebou return');
-};// console.log(spocitajVysledok); // nie je dostupna hodnota lebo je v inom scope
+}; // console.log(spocitajVysledok); // nie je dostupna hodnota lebo je v inom scope
 
 console.log(globalneCislo);
 
@@ -1024,11 +1039,11 @@ const spocitaj = (pole, cb) => {
   return vysledok;
 };
 
-const plus = cislo => {
+const plus = (cislo) => {
   return cislo + 10;
 };
 
-const nasob = cislo => {
+const nasob = (cislo) => {
   return cislo * 10;
 };
 
@@ -1039,26 +1054,32 @@ let hodnota2 = spocitaj([1, 2, 3], nasob);
 console.log(hodnota2);
 ```
 
-## 34.  Sila iterátorov pre polia
+## 34. Sila iterátorov pre polia
+
 - iteračné metódy pre polia: `forEach`, `map`, `filter`, `find`, `reduce`
-  
+
 poznáme starý dobrý `for` cyklus, ale nie je potrebný, ak poznáme iteračné metódy
+
 ```js
 const cislo = [0, 1, 2, 3, 4];
 for (let i = 0; i < cislo.length; i++) {
   console.log(cislo[i]);
 }
 ```
+
 namiesto toho možme využiť
+
 1. `forEeach(callbackfn, index, [])`
+
 - nemení veľkosť poľa
+
 ```js
 const ludia = [
   { meno: 'feri', vek: 30, pozicia: 'programator' },
   { meno: 'janko', vek: 22, pozicia: 'programator' },
   { meno: 'iveta', vek: 25, pozicia: 'programator' },
   { meno: 'dusi', vek: 20, pozicia: 'dizajner' },
-  { meno: 'traktorista', vek: 64, pozicia: 'boss' }
+  { meno: 'traktorista', vek: 64, pozicia: 'boss' },
 ];
 
 ludia.forEach((clovek, index) => {
@@ -1067,15 +1088,17 @@ ludia.forEach((clovek, index) => {
 ```
 
 2. `map(callbackfn, index, [])`
+
 - pri vytváraní nového poľa použijeme hodnoty z pôvodného poľa, a nato nám slúži `map()`
 - nemení veľkosť pôvodného poľa
+
 ```js
 const ludia = [
   { meno: 'feri', vek: 30, pozicia: 'programator' },
   { meno: 'janko', vek: 22, pozicia: 'programator' },
   { meno: 'iveta', vek: 25, pozicia: 'programator' },
   { meno: 'dusi', vek: 20, pozicia: 'dizajner' },
-  { meno: 'traktorista', vek: 64, pozicia: 'boss' }
+  { meno: 'traktorista', vek: 64, pozicia: 'boss' },
 ];
 
 const vekLudi = ludia.map((clovek, index) => {
@@ -1084,79 +1107,85 @@ const vekLudi = ludia.map((clovek, index) => {
 });
 console.log('vekLudi', vekLudi);
 
-const menaLudi = ludia.map(clovek => {
+const menaLudi = ludia.map((clovek) => {
   return clovek.meno;
 });
 console.log('menaLudi', menaLudi);
 
-const noviLudia = ludia.map(clovek => {
+const noviLudia = ludia.map((clovek) => {
   return {
     prveMeno: clovek.meno.toUpperCase(),
-    novyVek: clovek.vek + 20
+    novyVek: clovek.vek + 20,
   };
 });
 console.log('noviLudia', noviLudia);
 ```
 
 3. `filter(callbackfn, index, [])`
+
 - mení veľkosť poľa
 - filter vyhodnotí logiku vrámci funkcie a následne vráti nájdenú hodnotu, ktorú hľadáme
 - ak sa v poli filtrovaná hodnota nenachádza, vráti nám prázdne pole
+
 ```js
 const ludia = [
   { meno: 'feri', vek: 30, pozicia: 'programator' },
   { meno: 'janko', vek: 22, pozicia: 'programator' },
   { meno: 'iveta', vek: 25, pozicia: 'programator' },
   { meno: 'dusi', vek: 20, pozicia: 'dizajner' },
-  { meno: 'traktorista', vek: 64, pozicia: 'boss' }
+  { meno: 'traktorista', vek: 64, pozicia: 'boss' },
 ];
 // ak sa v poli filtrovana hodnota nenachadza vrati nam prazdne pole
-const mladyludia = ludia.filter(clovek => {
+const mladyludia = ludia.filter((clovek) => {
   return clovek.vek <= 30;
 });
 
 console.log('mladyludia', mladyludia);
 
-const programatori = ludia.filter(clovek => {
+const programatori = ludia.filter((clovek) => {
   return clovek.pozicia === 'programator';
 });
 console.log('programatori', programatori);
 
-const mladiProgramatori = ludia.filter(clovek => {
+const mladiProgramatori = ludia.filter((clovek) => {
   return clovek.vek < 25 && clovek.pozicia === 'programator';
 });
 console.log('mladiProgramatori', mladiProgramatori);
 ```
 
 4. `find(predicate, index, [])`
+
 - ak nenájde hľadaný prvok, vráti `undefined`
 - skvelé pre získanie jedinečnej hodnoty z poľa
 - vráti vždy len prvú nájdenu hodnotu vrámci definovanej logiky hľadania
+
 ```js
 const ludia2 = [
   { id: 1, meno: 'feri', vek: 30, pozicia: 'programator' },
   { id: 2, meno: 'janko', vek: 22, pozicia: 'programator' },
   { id: 3, meno: 'iveta', vek: 25, pozicia: 'programator' },
   { id: 4, meno: 'dusi', vek: 20, pozicia: 'dizajner' },
-  { id: 5, meno: 'traktorista', vek: 64, pozicia: 'boss' }
+  { id: 5, meno: 'traktorista', vek: 64, pozicia: 'boss' },
 ];
-const clovekId = ludia2.find(clovek => {
+const clovekId = ludia2.find((clovek) => {
   return clovek.id === 0;
 });
 console.log('clovekId', clovekId);
 ```
 
 5. `reduce(callbackfn, currentValue, currentIndex, [])`
+
 - slúži na manipuláciu aktuálne iterovanej hodnoty s predošlou iterovanou hodnotou
 - 1 vstupný parameter accumulator - acc - total z celkovej kalkulácie
 - 2 vstupný parameter currentValue - curr - aktuálna iterovaná hodnota
+
 ```js
 const ludia3 = [
   { id: 1, meno: 'feri', vek: 30, pozicia: 'programator', plat: 2000 },
   { id: 2, meno: 'janko', vek: 22, pozicia: 'programator', plat: 900 },
   { id: 3, meno: 'iveta', vek: 25, pozicia: 'programator', plat: 1900 },
   { id: 4, meno: 'dusi', vek: 20, pozicia: 'dizajner', plat: 1200 },
-  { id: 5, meno: 'traktorista', vek: 64, pozicia: 'boss', plat: 9000 }
+  { id: 5, meno: 'traktorista', vek: 64, pozicia: 'boss', plat: 9000 },
 ];
 const scitaniePlatov = ludia3.reduce((acc, curr) => {
   console.log('total', acc);
@@ -1168,52 +1197,78 @@ console.log('scitaniePlatov', scitaniePlatov);
 ```
 
 ## 35. Math objekt - štandardizované matematické metódy
+
+- `Math.abs(a - b)` - absolutna hodnota so všetkými desatinnými číslami t.j. ak je vstupna hodnota vo funkci zaporná Math.abs() vrati vysledok ako kladne číslo | -10 | = 10
+
+```js
+console.log(Math.abs(1.23456, 7.89012));
+```
+
 - `Math.floor()` - zaukrúhľuje na celé číslo
+
 ```js
 const cislo = 4.56789;
 console.log(Math.floor(cislo)); // 4
 ```
+
 - `Math.ceil()` - zaokrúhľuje na najbližšie najväčšie celé číslo
+
 ```js
 const cislo = 4.56789;
 console.log(Math.ceil(cislo)); // 5
 ```
+
 - `Math.sqrt()` - odmocnina čísla
+
 ```js
 console.log(Math.sqrt(25)); // 5
 ```
+
 - `Math.PI` - 3.141592653589793
+
 ```js
 console.log(Math.PI);
 ```
+
 - `Math.min()` - nájdenie najmenšieho čísla
+
 ```js
 console.log(Math.min(1, 4, 67, 89, 9));
 ```
+
 - `Math.max()` - nájdenie najväčšieho čísla
+
 ```js
 console.log(Math.max(1, 4, 67, 89, 9));
 ```
+
 - `Math.random()` - vráti náhodne vygenerované číslo
+
 ```js
 console.log(Math.random());
 console.log(Math.floor(Math.random() * 10)); // 0 - 10
 console.log(Math.floor(Math.random() * 10 + 1)); // 1 - 10
 ```
+
 - `Math.round()` - zaokrúhľuje na najbližšie celé číslo
+
 ```js
 console.log(Math.round(2.5)); // 3
 console.log(Math.round(2.4)); // 2
 ```
+
 ## 36. Date objekt - vieme získať aktuálny čas, deň, mesiac, rok a časové pásmo
+
 vieme si nadefinovať začiatočný stav dát pre date objekt
 [linka](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
+
 ```js
 const date1 = new Date('December 17, 1995 03:24:00'); // 1995-12-17T02:24:00.000Z
 const date2 = new Date('1995-12-17T03:24:00'); // 1995-12-17T02:24:00.000Z
 ```
 
 vieme vytiahnúť dáta z date objektu
+
 ```js
 const datum = new Date();
 console.log(datum);
@@ -1240,41 +1295,53 @@ console.log(event.getDate());
 ```
 
 ## 37. DOM - dokument objekt model
+
 Vytiahnutie elementov z DOM vieme pomocou týchto metód:
+
 - `getElementById(id_elementu)` selektujem podľa id elementov
+
 ```js
-const h1 = document.getElementById('title')
+const h1 = document.getElementById('title');
 h1.style.color = 'red';
 console.log(h1); // <h1 id="title" style="color: red;">text</h1>
 ```
+
 - `getElementsByTagName(nazov_elementu)` selektujem podľa tag názvu elementu
+
 ```js
 const list = document.getElementsByTagName('li');
 console.log(list); // vrati pole selektnutych elementov
 console.log(list.length); // pocet prvkov v poli
 list[0].style.color = 'red';
 ```
+
 list nám vráti HTMLCollection, ktoré nie je js pole, ktoré si pomocou spread operatora tj.`...` vieme preiterovať a vložiť do poľa, ktoré následne môžme používať ako v bežnom js
 
 ```js
 const novePole = [...list];
-novePole.forEach(element => {
+novePole.forEach((element) => {
   console.log(element);
 });
 ```
+
 - `getElementsByClassName(class_element)` selektujem podľa class názvu elementu
+
 ```js
 const classSelektnutie = document.getElementsByClassName('daco');
 console.log(classSelektnutie);
 classSelektnutie[1].style.backgroundColor = 'red';
 ```
-- `querySelector(vsetky_CSS_selektory)` napr. *, .className, #idName, div[class="daco"]
+
+- `querySelector(vsetky_CSS_selektory)` napr. \*, .className, #idName, div[class="daco"]
+
 ```js
 const querySelektJedenPrvyNajdenyElement = document.querySelector('li');
 console.log(querySelektJedenPrvyNajdenyElement);
 querySelektJedenPrvyNajdenyElement.style.backgroundColor = 'green';
 ```
-- `querySelectorAll(vsetky_CSS_selektory)` napr. *, .className, #idName, div[class="daco"]
+
+- `querySelectorAll(vsetky_CSS_selektory)` napr. \*, .className, #idName, div[class="daco"]
+
 ```js
 const querySelektVsetkyNajdeneElementy = document.querySelectorAll('li');
 console.log(querySelektVsetkyNajdeneElementy);
@@ -1282,37 +1349,49 @@ querySelektVsetkyNajdeneElementy[3].style.backgroundColor = 'green';
 ```
 
 ## 38. navigovanie v DOM - `children`, `childNodes`, `firstChild`, `lastChild`
+
 - `childNodes` vráti všetky deti selektnutého elementu aj s prázdnym definovaným priestorom
+
 ```js
 const zoznam = document.querySelector('#zoznam');
 const vsetkyVnoreneDataElementu = zoznam.childNodes;
 console.log(vsetkyVnoreneDataElementu);
 ```
+
 - `children` vieme získať všetky vnorené elementy v selektnutom elemente
+
 ```js
 const vsetkyDetiElementu = zoznam.children;
 console.log(vsetkyDetiElementu);
 ```
+
 - `firstChild` získame prvé dieťa z childNodes
+
 ```js
 const vytiahnemPrveDieta = zoznam.firstChild;
 console.log(vytiahnemPrveDieta);
 ```
+
 - `lastChild` získame posledné dieťa z childNodes
+
 ```js
 const vytiahnemPosledneDieta = zoznam.lastChild;
 console.log(vytiahnemPosledneDieta);
 ```
 
 ## 39. navigovanie v DOM - `nextSibling` vs `previousSibling`
+
 - `nextSibling` vieme sa posunúť vrámci DOM o childNodes nadol
+
 ```js
 const prvyElement = document.querySelector('.prva');
 console.log(prvyElement);
 const druhyElement = prvyElement.nextSibling.nextSibling;
 console.log(druhyElement);
 ```
+
 - `previousSibling` vieme sa posunúť vrámci DOM o childNodes nahor
+
 ```js
 const poslednyElement = document.querySelector('.posledna');
 console.log(poslednyElement);
@@ -1321,7 +1400,9 @@ console.log(predposlednyElement);
 ```
 
 ## 40. hodnoty v DOM - textConent vs nodeValue
+
 - `nodeValue` vracia string z definovaného childNodes, ktorý musí byť definovaný pomocou [poradie_ktori_string_chcem]
+
 ```js
 const specialnyElement = document.getElementById('special');
 console.log('specialnyElement:', specialnyElement);
@@ -1332,14 +1413,18 @@ console.log('hodnotaNodeValue:', hodnotaNodeValue);
 const hodnotaNodeValueUpravena = specialnyElement.childNodes[0].nodeValue.trim();
 console.log('hodnotaNodeValueUpravena:', hodnotaNodeValueUpravena);
 ```
+
 - `textContent` vracia string nachádazjúci sa v selektnutom elemente
+
 ```js
 const hodnotaTextContent = specialnyElement.textContent;
 console.log('hodnotaTextContent:', hodnotaTextContent);
 ```
 
 ## 41. `getAttribute()` vs `setAttribute()`
+
 - `getAttribute(nazovatributu)` pomocou tejto metódy vieme vytiahnúť zo selektnuteho elementu hodnotu z definovaného atribútu
+
 ```js
 const elementLiPrvy = document.querySelector('li');
 console.log('li element:', elementLiPrvy);
@@ -1354,7 +1439,9 @@ console.log('a element:', elementA);
 const showHref = elementA.getAttribute('href');
 console.log('showHref:', showHref);
 ```
+
 - `setAttribute(nazovAtributu, hodnotaAtributu)` pomocou tejto metódy vieme vložiť definovaný atribút a jeho hodnotu do selektnutého elementu
+
 ```js
 const elementLiPosledny = document.getElementsByTagName('li')[1];
 elementLiPosledny.setAttribute('class', 'posledny');
@@ -1363,7 +1450,9 @@ console.log(elementLiPosledny);
 ```
 
 ## 42. `className` vs `classList`
+
 - `className` pomocou vytiahnutej premennej vieme vložiť classy alebo ich prepísať
+
 ```js
 const prvy = document.getElementById('prvy');
 const druhy = document.getElementById('druhy');
@@ -1376,7 +1465,9 @@ console.log(nazovClassy);
 druhy.className = 'farba text'; // do selektnuteho elementu druhy prepisem alebo vlozim classu s definovanym nazvom
 treti.className = 'farba text'; // do selektnuteho elementu treti prepisem alebo vlozim classu s definovanym nazvom
 ```
+
 - `classList` tento parameter vráti pole, ktoré obsahuje všetky classy nachádzajúce sa v seleknutom elemente a dĺžku `length` poľa spolu s hodnotou `value`, ktorá obsahuje všetky classy.
+
 ```js
 const prvy = document.getElementById('prvy');
 const druhy = document.getElementById('druhy');
@@ -1386,12 +1477,15 @@ const selekttretiElement = treti.classList;
 
 console.log(selekttretiElement); // vrati pole class a length a value
 ```
-vrámci `classList` sa nachádzajú metódy: 
+
+vrámci `classList` sa nachádzajú metódy:
+
 - `add(nazov_classy)`, ktorá pridáva classu
 - `remove(nazov_classy)`, ktorá odoberá classu
 - `item(poradiaClassy_vPoli)` vráti názov classy z poľa
 - `replace(nazov_classy, novy_nazov_classy)` prepíše starú classu na novú
 - `contains(nazov_classy)` vráti `true` alebo `false` podľa toho, či classa existuje
+
 ```js
 selekttretiElement.add('farba');
 selekttretiElement.remove('farba');
@@ -1411,6 +1505,7 @@ console.log(vysledok);
 - `selektnutyElement.appendChild(childElement)` táto metóda slúži na vkladanie vytvorených elementov alebo textov vrámci DOMu, kde najskôr musím definovať kam chcem vložiť niečo t.j. `selektnutyElement` a čo chcem vložiť `childElement` t.j. text alebo ďalší html element.
 
 priklady:
+
 ```js
 // vytvor prázdny element
 const vytvorenyDivElement = document.createElement('div');
@@ -1432,42 +1527,43 @@ ak by som chcel vytvoriť zoznam ul element so zanorenými li elementami, ktoré
 const elementUl = document.createElement('ul');
 
 // potom vytvorím li element
-const elementli1 = document.createElement('li')
+const elementli1 = document.createElement('li');
 // potom vytvorím text
-const text1 = document.createTextNode('prvy')
+const text1 = document.createTextNode('prvy');
 // potom vložím do vytvoreného elementu li vytvorený text
 elementli1.appendChild(text1);
 // potom vložím do ul elementu li element, ktorý už obsahuje text
-elementUl.appendChild(elementli1)
+elementUl.appendChild(elementli1);
 
 // potom vytvorím li element
-const elementli2 = document.createElement('li')
+const elementli2 = document.createElement('li');
 // potom vytvorím text
-const text2 = document.createTextNode('druhy')
+const text2 = document.createTextNode('druhy');
 // potom vložím do vytvoreného elementu li vytvorený text
 elementli2.appendChild(text2);
 // potom vložím do ul elementu li element, ktorý už obsahuje text
-elementUl.appendChild(elementli2)
+elementUl.appendChild(elementli2);
 
 // potom vytvorím li element
-const elementli3 = document.createElement('li')
+const elementli3 = document.createElement('li');
 // potom vytvorím text
-const text3 = document.createTextNode('treti')
+const text3 = document.createTextNode('treti');
 // potom vložím do vytvoreného elementu li vytvorený text
 elementli3.appendChild(text3);
 // potom vložím do ul elementu li element, ktorý už obsahuje text
-elementUl.appendChild(elementli3)
+elementUl.appendChild(elementli3);
 
 // potom vložím do body uz ul element, ktorý obsahuje li elementy aj s textami
 document.body.appendChild(elementUl);
 ```
 
 kratšia verzia
+
 ```js
 // vytvorím si pole textov
 const pole = ['prvy', 'druhy', 'treti'];
 // namapujem texty a koľko textov mám, tolko vytvorím li s textami
-pole.map(item => {
+pole.map((item) => {
   // potom vytvorím li element
   const elementli = document.createElement('li');
   // potom vytvorím text
@@ -1482,6 +1578,7 @@ document.body.appendChild(elementUl);
 ```
 
 - `document.body.insertBefore(referenciaNovyVytvorenyElement, referenciaPredKtoriElement)` vkladá novo vytvorený element pred už existujúci element
+
 ```js
 // selektnem si už existujúci element
 const slectObalovac = document.getElementById('obalovac');
@@ -1496,7 +1593,9 @@ elementH2.appendChild(textH2);
 // vrámci body chcem vložiť novo vytvorený element h2 s textom pred existujúci element, ktorý selektujem pomocou id obalovac
 document.body.insertBefore(elementH2, slectObalovac);
 ```
+
 - `document.body.replaceChild(novyElement, staryElement)` pomocou metódy `replaceChild()` vieme prepísať existujúci element v DOMe na novyElement
+
 ```js
 // vytvor h2 element
 const elementH2 = document.createElement('h2');
@@ -1516,17 +1615,19 @@ vytvorenyDivElement.appendChild(vytvorenyText);
 // pridaj vytvorený element div s vytvoreným textom do body
 document.body.appendChild(vytvorenyDivElement);
 
-// nahraď div element h2 elementom 
+// nahraď div element h2 elementom
 document.body.replaceChild(elementH2, vytvorenyDivElement);
 ```
 
 ## 44. `textContent` vs `innerHTML`
+
 - `selektnutyElement.textContent` vieme získať textový obsah elementu a jeho potomkov, alebo definovať nový text pre elementLi
+
 ```js
 const pole = ['prvy', 'druhy', 'treti'];
 const elementUl = document.createElement('ul');
 
-pole.map(text => {
+pole.map((text) => {
   const elementLi = document.createElement('li');
   // const textElementLi = document.createTextNode(text);
   // elementLi.appendChild(textElementLi);
@@ -1544,6 +1645,7 @@ document.body.insertBefore(krabica, zoznam);
 ```
 
 - `seleknutyElement.innerHTML` nastavuje alebo vracia HTML obsah elementu
+
 ```js
 console.log(elementUl.innerHTML); // <li>prvy</li><li>druhy</li><li>treti</li>
 const zoznam = document.createElement('ul');
@@ -1551,7 +1653,7 @@ zoznam.innerHTML = `<li class="item">1</li><li class="item">2</li>`;
 document.body.appendChild(zoznam);
 ```
 
-## 45. Zmena CSS pomocou style vlastností 
+## 45. Zmena CSS pomocou style vlastností
 
 ```js
 const nadpis = document.getElementById('nadpis');
@@ -1569,9 +1671,13 @@ nadpis.style.color = 'white';
 [info o trejtej moznosti v addEventListener metode](https://www.w3schools.com/js/tryit.asp?filename=tryjs_addeventlistener_usecapture)
 
 Priklad posluchaca ktory kontroluje event klik nad celym DOMom
+
 ```js
-document.addEventListener('click', () => console.log('ci pana klikol si dakde'));
+document.addEventListener('click', () =>
+  console.log('ci pana klikol si dakde')
+);
 ```
+
 Namiesto dokumentu môžeme použiť aj selektnutý element. Napr.:
 
 ```js
@@ -1586,83 +1692,85 @@ btn.addEventListener('click', e => {
 
 Poznáme eventy napr.:
 
-- eventy vramci mysi 
+- eventy vramci mysi
+
 ```js
 const item = document.getElementById('item');
 
-item.addEventListener('click', function() {
+item.addEventListener('click', function () {
   console.log('Klikol som');
 });
-item.addEventListener('dblclick', function() {
+item.addEventListener('dblclick', function () {
   console.log('dblclick 2x som klikol');
 });
-item.addEventListener('mousedown', function() {
+item.addEventListener('mousedown', function () {
   console.log('mousedown nastane ked kliknem nad prvkom');
 });
-item.addEventListener('mouseup', function() {
+item.addEventListener('mouseup', function () {
   console.log('mouseup ked pouzivatel uvolni tlacidlo mysi nad prvkom');
 });
-item.addEventListener('mouseout', function() {
+item.addEventListener('mouseout', function () {
   console.log('mouseout odisiel som z elementu');
 });
-item.addEventListener('mouseover', function() {
+item.addEventListener('mouseover', function () {
   console.log(
     'mouseover ked sa kurzor presunie nad prvok alebo na jedno z jeho deti'
   );
 });
-item.addEventListener('mouseenter', function() {
+item.addEventListener('mouseenter', function () {
   console.log('mouseeneter ked sa kurzor presunie na prvok');
 });
-item.addEventListener('mouseleave', function() {
+item.addEventListener('mouseleave', function () {
   console.log('mouseleave ked sa ukazovatel presunie z prvku');
 });
-item.addEventListener('mousemove', function() {
+item.addEventListener('mousemove', function () {
   console.log('mousemove ked sa kurzor pohybuje nad prvkom');
 });
 ```
 
 - klavesove eventy vramci Input elementu
+
 ```js
 const input1 = document.getElementById('input1');
-input1.addEventListener('keypress', function() {
+input1.addEventListener('keypress', function () {
   console.log(e.target.value); // co napisem do inputu viem to ziskat cez value
   console.log('stlacil som nieco na klavesnici okrem sipiek');
 });
 
 const input2 = document.getElementById('input2');
-input2.addEventListener('keydown', function() {
+input2.addEventListener('keydown', function () {
   console.log('stlacil som sipku dole');
 });
 
 const input3 = document.getElementById('input3');
-input3.addEventListener('keyup', function() {
+input3.addEventListener('keyup', function () {
   console.log('stlacil som sipku hore');
 });
 
 const input4 = document.getElementById('input4');
-input4.addEventListener('focus', function() {
+input4.addEventListener('focus', function () {
   console.log('vosiel som s mysou do inputu');
 });
 
-input4.addEventListener('blur', function() {
+input4.addEventListener('blur', function () {
   console.log('odisiel som z focusnuteho inputu');
 });
 
-input4.addEventListener('cut', function() {
+input4.addEventListener('cut', function () {
   console.log('ked oznacim text v inpute a stalcim ctrl+x');
 });
 
-input4.addEventListener('paste', function() {
+input4.addEventListener('paste', function () {
   console.log('ked skopirujem text pomocou stalcenim ctrl+v');
 });
 
 const input5 = document.getElementById('input5');
-input5.addEventListener('input', function() {
+input5.addEventListener('input', function () {
   console.log('hocico urobim vramci inputu');
 });
 
 const input6 = document.getElementById('input6');
-input6.addEventListener('change', function() {
+input6.addEventListener('change', function () {
   console.log('ked vlozim jedno pismenko a odkliknem sa z inputu');
 });
 ```
@@ -1673,7 +1781,7 @@ input6.addEventListener('change', function() {
 
 ```js
 const btn = document.getElementById('btn');
-btn.addEventListener('click', e => {
+btn.addEventListener('click', (e) => {
   console.log('event', e);
   console.log('target nad akym elementom sa vykonal event click', e.target);
   console.log('className', e.target.className);
@@ -1685,39 +1793,42 @@ btn.addEventListener('click', e => {
 ```
 
 ak mam dve definovane addEventListener metody a su sucastne zavolane eventy a chcem aby sa vykonala iba jedna funkcia pouzijeme vramci eventu metodu `stopPropagation()`
-```js
-document.getElementById('btn').addEventListener('click', e => {
-  e.stopPropagation();
-  console.log('klikol som')
-}); 
 
-document.addEventListener('click', e => {
+```js
+document.getElementById('btn').addEventListener('click', (e) => {
+  e.stopPropagation();
+  console.log('klikol som');
+});
+
+document.addEventListener('click', (e) => {
   console.log('klikol som nad dokumentom');
 });
 ```
 
 ak ma html tag po vyvolani evnetu vlastnu funkciu (napr. linka s definovanym href atributom po kliknuti presmeruje pouzivatela na inu stranku) vieme taketo funkcionality vypnut pomocou definovania metody `preventDefault()`
-```js
-document.getElementById('a').addEventListener('click', e => {
-  e.preventDefault();
-  console.log('klikol som')
-}); 
 
-document.addEventListener('click', e => {
+```js
+document.getElementById('a').addEventListener('click', (e) => {
+  e.preventDefault();
+  console.log('klikol som');
+});
+
+document.addEventListener('click', (e) => {
   console.log('klikol som nad dokumentom');
 });
 ```
 
 ## 47. `localStorage.setItem()`, `localStorage.getItem()`, `JSON.stringify()`, `JSON.parse()`
 
-
 - `localStorage.setItem(definujem_nazov_kluca, definujem hodnotu)` sluzi na ukladanie dat do local storage v application devtools
+
 ```js
 localStorage.setItem('name', 'Janko');
 localStorage.setItem('age', '21');
 ```
 
 - `localStorage.getItem(definujem_nazov_kluca)` sluzi na zistenie dat ulozenych v local storage v application devtools kde nam staci definovat key kluc podla ktoreho viem vytiahnut databaseHeslo
+
 ```js
 const name = localStorage.getItem('name');
 const age = localStorage.getItem('age');
@@ -1733,8 +1844,8 @@ const pole = [
   21,
   {
     name: 'janko',
-   age: 10
-  }
+    age: 10,
+  },
 ];
 const poleAkoJson = JSON.stringify(pole);
 console.log('JSON.stringify(pole):', poleAkoJson);
@@ -1746,7 +1857,7 @@ const objekt = {
   name: 'janko',
   cislo: 10,
   objekt: {},
-  pole: []
+  pole: [],
 };
 const objektAkoJson = JSON.stringify(objekt);
 console.log('JSON.stringify(objekt):', objektAkoJson);
@@ -1755,14 +1866,15 @@ localStorage.setItem('objektAkoJson', objektAkoJson);
 console.log(localStorage.getItem('objektAkoJson'));
 console.log(JSON.parse(localStorage.getItem('objektAkoJson')));
 ```
+
 ## 48. Forms
+
 form HTML tagy by mali byt obalene vramci `<form>` html tagu, ktori vie zachytit vnutorni submit event vramci `<input type="submit" value="submit" />`
 
 ```js
 const form = document.getElementById('form');
 
-
-form.addEventListener('submit', e => {
+form.addEventListener('submit', (e) => {
   e.preventDefault();
   const name = document.getElementById('name').value;
   const number = document.getElementById('number').value;
@@ -1773,7 +1885,9 @@ form.addEventListener('submit', e => {
   );
 });
 ```
+
 ## 49. DOM project with BOOTSTRAP 4
+
 [bootstrap](https://getbootstrap.com/)<br>
 [zadarmo obrazky](https://www.pexels.com/photo/)<br>
 [zadarmo videa](https://www.pexels.com/videos/)<br>
@@ -1786,10 +1900,10 @@ vramci bootstrapu zacinam s linkovanim<br>
 potom definujem zaciatocny obsah layoutu<br>
 [container vs container-fluid a Responsive breakpoints](https://getbootstrap.com/docs/4.3/layout/overview/)<br>
 
-
 ## 50. Objekty a jeho schopnosti (this, factory functions, constructor, prototype, find, new, object.create(), dedičnosť, call function, es6 class syntax)
 
 - [vytvaranie objektu](./lessons/50/zaklady)
+
 ```js
 const clovek = {
   name: 'Janko',
@@ -1799,15 +1913,18 @@ const clovek = {
   hello: () => {
     console.log('ahoj, volam sa Janko');
   },
-  ['last-name']: 'Balog'
+  ['last-name']: 'Balog',
 };
 ```
+
 zobrazenie celého obsahu v objekte
+
 ```js
 console.log(clovek);
 ```
 
 vytiahnutie jednej hodnoty z objektu
+
 ```js
 console.log(clovek.name);
 console.log(clovek['age']);
@@ -1818,29 +1935,33 @@ clovek.hello();
 ```
 
 prepisanie hodnoty v objekte
+
 ```js
 clovek.married = true;
-clovek['last-name'] = 'Nove priezvisko'
+clovek['last-name'] = 'Nove priezvisko';
 ```
 
 - pridanie nového parametra s hodnotou
+
 ```js
 clovek.city = 'Michalovce';
 ```
 
 - zmazanie parametra s hodnotou
+
 ```js
 delete clovek.married;
 ```
 
 - `this` je kľúčové slovo v js ktoré odkazuje (referuje) na objekt v ktorom je funkcia volaná, ku ktorému patrí teda v ktorom scope sa nachádza. [priklad](./lessons/50/keyword-this)
+
 ```js
 const john = {
   name: 'Janko',
   ['lastName']: 'Balog',
-  fullname: function() {
+  fullname: function () {
     console.log(`Volám sa ${this.name} ${this.lastName}`);
-  }
+  },
   // pre es6 arrow function zapis `this` nema dosah do scopu nasho objektu clovek
   // fullname: () => {
   //   console.log(`Volám sa ${this.name} ${this.lastName}`);
@@ -1853,15 +1974,17 @@ window.name = 'Ferko';
 window.lastName = 'Mrkvička';
 console.log(this);
 ```
+
 - funkcia ako tovareň na recyklovanie opakujuceho sa kódu. [priklad](./lessons/50/object-function)
+
 ```js
 function createPerson(name, lastName) {
   return {
     name: name,
     lastName: lastName,
-    fullname: function() {
+    fullname: function () {
       console.log(`Volám sa ${this.name} ${this.lastName}`);
-    }
+    },
   };
 }
 
@@ -1876,12 +1999,13 @@ jozef.fullname();
 ferko.fullname();
 ```
 
-- `funkcia ako objekt` ak nazov funkcie zacina velkym pismenom (`CreatePerson`) vieme ze ide o definovanie objektu ktorí reprezentuje construstor, ak chceme vytvoriť inštanciu tohto objektu musime použiť prikaz `new` (`new CreatePerson(očakavane vstupne hodnoty)) [priklad](./lessons/50/objekt-function-constructor)
+- `funkcia ako objekt` ak nazov funkcie zacina velkym pismenom (`CreatePerson`) vieme ze ide o definovanie objektu, ktorý reprezentuje construstor, ak chceme vytvoriť inštanciu tohto objektu musime použiť prikaz `new` (new CreatePerson(očakavane vstupne hodnoty)) [priklad](./lessons/50/objekt-function-constructor)
+
 ```js
 function CreatePerson(name, lastName) {
   this.name = name;
   this.lastName = lastName;
-  this.fullname = function() {
+  this.fullname = function () {
     console.log(`Volám sa ${this.name} ${this.lastName}`);
   };
 }
@@ -1900,7 +2024,7 @@ const bob = {};
 console.log(bob.constructor);
 const list = [];
 console.log(list.constructor);
-const sayHi = function() {};
+const sayHi = function () {};
 console.log(sayHi.constructor);
 
 const denis = new danko.constructor('denis', 'postrah'); // inštanciu objektu CreatePerson
@@ -1926,7 +2050,7 @@ john.school = 'super duper školy';
 console.log(john);
 ```
 
-- `Object.getPrototypeOf(instanciaClassy)` v `instanciaClassy.constructor.prototype` takýmto spôsobom viem vyťahovať hodnoty z classy [priklad](./lessons/50/objekt-get-data)
+- `Object.getPrototypeOf(specialnyObjekt)` v `specialnyhoObjekt.constructor.prototype` takýmto spôsobom viem vyťahovať hodnoty zo specialneho objektu [priklad](./lessons/50/objekt-get-data)
 
 ```js
 function Student(name, lastName, rola) {
@@ -1936,7 +2060,7 @@ function Student(name, lastName, rola) {
 }
 
 Student.prototype.school = 'tuke';
-Student.prototype.ahoj = function() {
+Student.prototype.ahoj = function () {
   console.log(
     `ahoj, ja som ${this.name} ${this.lastName} ${this.rola} ${this.school}`
   );
@@ -1952,25 +2076,26 @@ console.log(Object.getPrototypeOf(janko));
 ```
 
 - obash funkcii vramci konštruktora `constructor`
+
 ```js
 console.log(Object.getPrototypeOf(Object.getPrototypeOf(janko)));
 ```
 
-- objekt alebo pole `{}` vs `[]` vrámci domu maju nadefinované metódy, ktoré nám umožňujú pracovať z objektom alebo polom ak si ich chcem vypísať viem sa spýtať pomocou `construcotr` pred objekt alebo pole aké má definované metódy takto:  [priklad](./lessons/50/objekt-array-example-object-consturtor)
+- objekt alebo pole `{}` vs `[]` vrámci domu maju nadefinované metódy, ktoré nám umožňujú pracovať z objektom alebo polom ak si ich chcem vypísať viem sa spýtať pomocou `construcotr` pred objekt alebo pole aké má definované metódy takto: [priklad](./lessons/50/objekt-array-example-object-consturtor)
+
 ```js
 const list = []; // mam definované pole
 console.log(list.constructor); // vypýtam si obsah pola (krabičky)
 console.log(Object.getPrototypeOf(list)); // spýtam sa mojej prázdnej krabičky čo sa s ňou dá robiť
 console.log(Object.getPrototypeOf(Object.getPrototypeOf(list))); // spýtam sa krabičky ktorá ma v sebe metody čo sa dá robiť s metódami
 ```
-
 - `Object.create(nazovObjektu)` inštanciu objektu vieme vytvoriť viacerímy spôsobmi [priklad](./lessons/50/objekt-create)
 
 ```js
 const clovek = {
-  ahoj: function() {
+  ahoj: function () {
     console.log(`Volám sa ${this.name} ${this.lastName}`);
-  }
+  },
 };
 
 // 1 priklad
@@ -1983,10 +2108,82 @@ janko.ahoj();
 // 2 priklad
 const sona = Object.create(clovek, {
   name: { value: 'Sona' },
-  lastName: { value: 'Velka' }
+  lastName: { value: 'Velka' },
 });
 
 sona.ahoj();
 ```
-- inštancia classy teda objektu vytvára prepojenie medzi definovanými parametrami v objekte `this.name = name` a vstupnými hodnotami ktore sa definuju pri vytvarani inštancii. Teda parametre dedia vstupne hodnoty a vytváraju nový objekt s uloženými hodnotami.
 
+- inštancia špecialneho objektu vytvára prepojenie medzi definovanými parametrami v objekte `this.name = name` a vstupnými hodnotami ktore sa definuju pri vytvarani inštancii. Teda parametre dedia vstupne hodnoty a vytváraju nový objekt s uloženými hodnotami.
+
+- `class` je objekt, ktorý obsahuje constructor funkciu v ktorej sa nadefinujú parameter s hodnotami pri vytvárani inštancie danej classy
+
+```js
+class Kalkulacka {
+  constructor(num1, num2) {
+    this.num1 = num1;
+    this.num2 = num2;
+  }
+  spocitaj(spocitajNum1, spocitajNum2) {
+    return spocitajNum1 + spocitajNum2;
+  }
+  odpocitaj() {
+    return this.num1 - this.num2;
+  }
+}
+
+const calc = new Kalkulacka(3, 5); // inštancia classy
+
+console.log(calc.spocitaj(5, 5));
+console.log(calc.odpocitaj());
+```
+
+- `sub class` každá classa sa dá vnárať a dopĺňať o ďalšie classy a to pomocou `extends` (class A extends B - do classy A vkladam classu B. ak chcem vyuzivat v classe A vstupne hodnoty mus9m v Classe A v constructore zavolat funkciu super(sem definujem parametre ktore chcem vytiahnut z classy B), ak vo vnutri classe definujem `static nazovFunkcie() {}` neviem tuto funkciu volat vonku z objektu pomocou inštancie classy ake nepoužíjem `static` viem volat tuto funkciu z vonku...
+
+```js
+class Person {
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  ahoj() {
+    // tato funkcia je publick je dostupna pomocou in3tancie objektu
+    return `ahoj ${this.firstName} ${this.lastName}`;
+  }
+}
+
+class Customer extends Person {
+  constructor(firstName, lastName, phone, membership) {
+    super(firstName, lastName);
+
+    this.phone = phone;
+    this.membership = membership;
+  }
+
+  static getMembershipCost() {
+    // privatna funkcia ktora sa neda volat z vonku pomocou inštancie objektu
+    return 900;
+  }
+}
+
+const janko = new Customer('Janko', 'Traktorista', '555-555-5555', 'Standard');
+
+console.log(janko);
+console.log(janko.ahoj()); // da sa zavolat
+console.log(janko.getMembershipCost()); // neda sa zavolat
+```
+
+## 51. spustanie js suboru pomocou node
+
+javascriptový súbor viem spušťať v terminálý takto:
+```
+node ./sectaCezpriecinky/javascriptovySuborKtoriChcemSpustit.js
+```
+
+
+
+
+a vytvaranie modulov: module.exports = nazovPremenej, module.exports = {}, export { nazovPremenej }, export default, module.export.default
+
+- [vytvaranie objektu](./lessons/51/)

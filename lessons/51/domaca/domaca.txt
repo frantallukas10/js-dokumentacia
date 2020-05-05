@@ -1,0 +1,18 @@
+vytvor si js subor main.js
+a v pričinku helper vytvor subor index.js
+
+v ./helper/index.js
+vytvor kalkulacku
+t.j.
+funckia na scitania, odcitanie, delenie, nasobenie
+
+kazda funkcia bude mat error handling:
+ak nie sú definovane vstupné parameter povie ktoré nie su definovane
+ak zadavama zlý vstup t.j. nie čislo poviem hlašku zadaj čislo
+exportni vsetky funkcie
+
+v main.js
+importni teda requirni funkcie do tohto suboru a nasledne
+vytvor priklad pre kazdú definovanú funkciu
+
+a tiez priklad zlých vstupov
