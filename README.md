@@ -1844,8 +1844,13 @@ const pole = [
   21,
   {
     name: 'janko',
+<<<<<<< HEAD
     age: 10,
   },
+=======
+    age: 10
+  }
+>>>>>>> 9642ba6f8a1e1c3a46b9ae767b296322771092ec
 ];
 const poleAkoJson = JSON.stringify(pole);
 console.log('JSON.stringify(pole):', poleAkoJson);
@@ -1874,7 +1879,11 @@ form HTML tagy by mali byt obalene vramci `<form>` html tagu, ktori vie zachytit
 ```js
 const form = document.getElementById('form');
 
+<<<<<<< HEAD
 form.addEventListener('submit', (e) => {
+=======
+form.addEventListener('submit', e => {
+>>>>>>> 9642ba6f8a1e1c3a46b9ae767b296322771092ec
   e.preventDefault();
   const name = document.getElementById('name').value;
   const number = document.getElementById('number').value;
@@ -2173,6 +2182,7 @@ console.log(janko);
 console.log(janko.ahoj()); // da sa zavolat
 console.log(janko.getMembershipCost()); // neda sa zavolat
 ```
+<<<<<<< HEAD
 
 ## 51. spustanie js suboru pomocou node
 
@@ -2187,3 +2197,5 @@ node ./sectaCezpriecinky/javascriptovySuborKtoriChcemSpustit.js
 a vytvaranie modulov: module.exports = nazovPremenej, module.exports = {}, export { nazovPremenej }, export default, module.export.default
 
 - [vytvaranie objektu](./lessons/51/)
+=======
+>>>>>>> 9642ba6f8a1e1c3a46b9ae767b296322771092ec
